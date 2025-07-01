@@ -3,12 +3,13 @@ import '../App.css'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
+
 function App() {
   const categories = [
-    { id: 'yoga', title: 'Strength training', image: '/gym-image-1.png', description: 'Sculpt and strengthen your body with our advanced equipment.' },
+    { id: 'strength', title: 'Strength training', image: '/gym-image-1.png', description: 'Sculpt and strengthen your body with our advanced equipment.' },
     { id: 'cardio', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Boost your stamina and endurance with tailored cardio plans.' },
-    { id: 'strength', title: 'flexibility programs', image: '/gym-image-3.png', description: 'Improve your joint and muscle mobility through stretching, enhancing movement, performance, and injury prevention.' },
-    { id: 'dance', title: 'body composition', image: '/gym-image-4.png', description: 'Enhance your overall health, boosts metabolism, increases strength, and promotes a leaner physique.' },
+    { id: 'flexibility', title: 'flexibility programs', image: '/gym-image-3.png', description: 'Improve your joint and muscle mobility through stretching, enhancing movement, performance, and injury prevention.' },
+    { id: 'body', title: 'body composition', image: '/gym-image-4.png', description: 'Enhance your overall health, boosts metabolism, increases strength, and promotes a leaner physique.' },
   ];
 
   return (
@@ -24,7 +25,7 @@ function App() {
           <h1 className="body-main-text">
             Your Ultimate <br /> Fitness Destination
           </h1>
-          <button className="view-classes-btn">View Classes</button>
+<Link to="/categories" className="view-classes-btn">View Classes</Link>
         </div>
       </div>
       {/* Info Section */}
@@ -52,8 +53,9 @@ function App() {
           <div key={cat.id} className="category-card">
             <img src={cat.image} alt={cat.title} className="category-img" />
             <h3 className="category-title">{cat.title}
-              <a href={`/categories/${cat.id}`} className="category-arrow"><FaChevronRight /></a>
-            </h3>
+ <Link to={`/categories/${cat.id}`} className="category-arrow">
+    <FaChevronRight />
+  </Link>            </h3>
             <p className="category-paragraph">
               {cat.description.split('\n').map((line, index) => (
                 <span key={index}>
@@ -65,8 +67,11 @@ function App() {
           </div>
 
         ))}
-        <button class="arrow-button">View more<span class="arrow"></span>
-        </button>
+
+      <Link to="/categories" className="arrow-button">
+  View more<span className="arrow"></span>
+</Link>
+
 
 
       </div>

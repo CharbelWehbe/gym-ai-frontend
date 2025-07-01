@@ -5,7 +5,7 @@ import Categories from "./pages/Categories";
 import Profile from "./pages/Profile";
 import Signin from "./pages/Signin";
 import Layout from "./components/Layout";
-
+import SpecificCategory from "./pages/SpecificCategory";
 function App() {
   return (
     <Layout>
@@ -13,7 +13,7 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       {/* <Route index element={<LandingPage/>}/> */}
       <Route path="/categories" element={<Categories />} />
-      <Route path="/categories/:categoryId" element={<Categories />} />
+      <Route path="/categories/:categoryId" element={<SpecificCategory />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Signin />} />
     </Routes>

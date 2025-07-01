@@ -1,0 +1,83 @@
+/* Categories.css */
+.cat-section {
+  background-color: #1C1C1C;
+  padding: 60px 5%;
+  color: white;
+}
+
+.cat-title {
+  font-family: Anton;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.cat-card {
+  width: 100%;
+  max-width: 300px;
+  text-align: start;
+}
+
+.cat-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.cat-card-title {
+  font-family: Roboto;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.cat-arrow {
+  color: #C31AFB;
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.cat-arrow:hover {
+  transform: translateX(5px);
+}
+
+.cat-description {
+  font-family: Roboto;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .cat-card {
+    max-width: 160px;
+  }
+
+  .cat-card-title {
+    font-size: 16px;
+  }
+
+  .cat-description {
+    font-size: 12px;
+  }
+}
