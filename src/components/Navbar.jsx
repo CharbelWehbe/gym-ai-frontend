@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-  const handleLinkClick = () => setIsOpen(false);
+    const handleLinkClick = () => setIsOpen(false);
 
   return (
     <nav className="navbar transparent-navbar">

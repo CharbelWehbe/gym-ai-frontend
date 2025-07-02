@@ -25,7 +25,7 @@ function App() {
           <h1 className="body-main-text">
             Your Ultimate <br /> Fitness Destination
           </h1>
-<Link to="/categories" className="view-classes-btn">View Classes</Link>
+            <Link to="/categories" className="view-classes-btn">View Classes</Link>
         </div>
       </div>
       {/* Info Section */}
@@ -53,9 +53,10 @@ function App() {
           <div key={cat.id} className="category-card">
             <img src={cat.image} alt={cat.title} className="category-img" />
             <h3 className="category-title">{cat.title}
- <Link to={`/categories/${cat.id}`} className="category-arrow">
-    <FaChevronRight />
-  </Link>            </h3>
+                <Link to={`/categories/${cat.id}`} className="category-arrow">
+                      <FaChevronRight />
+                </Link>          
+              </h3>
             <p className="category-paragraph">
               {cat.description.split('\n').map((line, index) => (
                 <span key={index}>
@@ -68,9 +69,9 @@ function App() {
 
         ))}
 
-      <Link to="/categories" className="arrow-button">
-  View more<span className="arrow"></span>
-</Link>
+          <Link to="/categories" className="arrow-button">
+                 View more<span className="arrow"></span>
+          </Link>
 
 
 

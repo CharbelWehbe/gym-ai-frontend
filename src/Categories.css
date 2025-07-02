@@ -1,16 +1,21 @@
 /* Categories.css */
 .cat-section {
-  background-color: #1C1C1C;
-  padding: 60px 5%;
+  background-color: #1c1c1c;
+  padding: 7rem 5%;
   color: white;
 }
 
 .cat-title {
   font-family: Anton;
-  font-size: 50px;
+  font-size: 96px;
   text-align: center;
   margin-bottom: 2rem;
   text-transform: uppercase;
+  font-weight: 400;
+  //line-height: 100%;
+  letter-spacing: 0%;
+
+  line-height: 96px;
 }
 
 .cat-grid {
@@ -35,17 +40,21 @@
 .cat-card-title {
   font-family: Roboto;
   font-size: 20px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0%;
+  line-height: 100%;
   display: flex;
   align-items: center;
   justify-content: start;
   gap: 0.5rem;
   margin-top: 10px;
   color: #fff;
+  justify-content: space-between;
 }
 
 .cat-arrow {
-  color: #C31AFB;
+  color: #c31afb;
   font-size: 20px;
   transition: transform 0.2s ease;
 }
@@ -56,28 +65,57 @@
 
 .cat-description {
   font-family: Roboto;
-  font-size: 14px;
+  font-size: 15px;
   text-transform: uppercase;
   color: #fff;
   margin-top: 10px;
+
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .cat-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+  .cat-title {
+    font-family: Anton;
+    font-size: 60px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0%;
+    margin-bottom: 2rem;
+    //line-height: 100%;
 
+    line-height: 96px;
+  }
   .cat-card {
     max-width: 160px;
   }
 
   .cat-card-title {
-    font-size: 16px;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 700;
+    //font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    text-align: start;
+    
   }
 
   .cat-description {
-    font-size: 12px;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: 400;
+    //font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: start;
   }
 }
