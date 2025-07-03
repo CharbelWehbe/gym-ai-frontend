@@ -41,6 +41,10 @@
   letter-spacing: 0%;
   text-transform: uppercase;
   text-align: start;
+  margin-top: 10px;
+  color: #fff;
+  
+
 }
 
 .Specific-category-description {
@@ -50,9 +54,10 @@
   line-height: 100%;
   letter-spacing: 0%;
   margin-top: 10px;
-  text-transform: uppercase;
   text-align: start;
   color: #fff;
+    padding: 0.5rem 0;
+
 }
 
 /* Responsive */
@@ -70,6 +75,7 @@
     letter-spacing: 0%;
     text-align: center;
     text-transform: uppercase;
+    margin-top:1rem;
   }
   .Specific-category-title {
     font-size: 20px;

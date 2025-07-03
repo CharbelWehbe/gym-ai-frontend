@@ -66,9 +66,9 @@
 .cat-description {
   font-family: Roboto;
   font-size: 15px;
-  text-transform: uppercase;
   color: #fff;
   margin-top: 10px;
+  padding: 0.5rem 0;
 
   font-weight: 400;
   line-height: 100%;
@@ -110,7 +110,7 @@
   }
 
   .cat-description {
-    font-size: 13px;
+    font-size: 15px;
     font-family: Roboto;
     font-weight: 400;
     //font-size: 32px;

@@ -1,5 +1,5 @@
 import '../Profile.css'
-import image from "/nature.png";
+import image from "/avatar-icon.png";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { MdOutlineCalendarToday } from "react-icons/md";
 

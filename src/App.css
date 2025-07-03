@@ -21,6 +21,32 @@ body {
   background-color: white;
   transition: 0.3s;
 }
+
+
+/* For underline effect on nav links */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+  color: white;
+  
+}
+
+.nav-link.active-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #c31afb; /* highlight color */
+}
+
+/* For buttons when active (Sign In / Profile) */
+.active-button {
+  background-color: #3b0ca5 !important;
+  box-shadow: 0 0 5px #c31afb;
+}
+
 /* Navbar */
 .navbar {
   //background-color: #000000; /* black background */
@@ -35,7 +61,6 @@ body {
   align-items: center;
   //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 /* Navbar links */
 .nav-links {
   display: flex;
@@ -158,7 +183,7 @@ body {
 
 /* Custom Sign In Button */
 .button-18 {
-  background: linear-gradient(86.63deg, #c31afb -8.39%, #565fff 123.39%);
+ background: linear-gradient(86.63deg, #c31afb -8.39%, #565fff 123.39%);
 
   color: white;
   border: none;
@@ -346,7 +371,6 @@ body {
   line-height: 100%;
   letter-spacing: 0%;
   text-align: start;
-  text-transform: uppercase;
   //margin-top:0%;
   color: #ffffff;
   display: flex;
@@ -492,7 +516,25 @@ body {
   .hamburger {
     display: flex;
   }
+ 
+ .nav-link.active-link::after {
+    /* Completely remove the underline line */
 
+    display: none !important;
+    content: none;
+  }
+  .nav-link.active-link {
+    color: #c31afb !important;
+    font-weight: bold;
+  }
+
+  /* Change button colors when active */
+  .button-18.active-button,
+  .btn-nav.active-button {
+    background-color: #3b0ca5 !important;
+    color: white !important;
+  }
+  
   .nav-links {
     display: none;
     position: absolute;
@@ -619,8 +661,8 @@ body {
     text-align: center;
   }
   .promo-video {
-    width: 90%;
-    max-width: 100%;
+    //width: 90%;
+    //max-width: 100%;
   }
   .categories-section {
     // flex-direction: column;

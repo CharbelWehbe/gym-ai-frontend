@@ -1,7 +1,8 @@
 //import "../styles/layout.css";
 import '../App.css';
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +11,9 @@ export default function Navbar() {
   return (
     <nav className="navbar transparent-navbar">
       <div className="logo">
-        <Link to="/" onClick={handleLinkClick}>
+        <NavLink to="/" onClick={handleLinkClick}>
           <img src="/logo-image.png" alt="Logo" className="logo-image" />
-        </Link>
+        </NavLink>
       </div>
       <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
         <span className="bar"></span>
@@ -22,13 +23,13 @@ export default function Navbar() {
        {/* Navigation Links */}
       <div className={`nav-links ${isOpen ? 'open' : ''}`}>
         <div className="nav-items">
-          <Link to="/" onClick={handleLinkClick}>Home</Link>
-          <Link to="/categories" onClick={handleLinkClick}>Categories</Link>
+          <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Home</NavLink>
+          <NavLink to="/categories" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Categories</NavLink>
         </div>
-        <Link to="/login" className="button-18" onClick={handleLinkClick}>Sign In</Link>
-        <Link to="/profile" className="btn-nav" onClick={handleLinkClick}>
+        <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
+        <NavLink to="/profile" onClick={handleLinkClick}className={({ isActive }) => isActive ? "btn-nav active-button" : "btn-nav"}>
           <img src="/profile-icon.png" alt="Profile" className="profile-icon" />
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );
