@@ -21,16 +21,36 @@
   gap: 2rem;
   justify-items: center;
 }
-
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+.outlined-heart {
+  color: black;
+  font-size: 20px;
+  background-color: transparent;
+}
 .detail-card {
+   position: relative;
   max-width: 300px;
   text-align: center;
 }
-
+.arrow-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #c31afb;
+}
 .detail-img {
-  width: 100%;
+   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: cover; 
+   
 }
 
 .Specific-category-title {
@@ -62,11 +82,38 @@
 
 /* Responsive */
 @media (max-width: 480px) {
-
+/*
   .detail-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }*/
+
+  .detail-grid {
+    display: flex;                  /* switch to horizontal flex */
+    flex-wrap: nowrap;              /* no wrapping */
+    overflow-x: auto;               /* horizontal scroll */
+    scroll-snap-type: x mandatory;  /* snap each card */
+    scroll-behavior: smooth;        /* smooth snap */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;           /* optional spacing under cards */
   }
+
+  /* hide the scrollbar for a cleaner look */
+  .detail-grid::-webkit-scrollbar {
+    //display: none;
+  }
+
+  .detail-card {
+    flex: 0 0 100%;        /* each card takes full viewport width */
+    scroll-snap-align: start;
+    max-width: none;       /* override any max-width */
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;       /* optional side padding */
+    max-width: 70%;
+    //height:100%;
+    margin-top:0%;
+  }
+ 
   .detail-title {
     font-family: Anton;
     font-weight: 400;
@@ -75,10 +122,10 @@
     letter-spacing: 0%;
     text-align: center;
     text-transform: uppercase;
-    margin-top:1rem;
+    margin-top:2.5rem;
   }
   .Specific-category-title {
-    font-size: 20px;
+    font-size: 40px;
     font-family: Roboto;
     font-weight: 700;
     line-height: 100%;
@@ -86,12 +133,28 @@
     text-transform: uppercase;
   }
   .Specific-category-description {
-    font-size: 14px;
+    font-size: 20px;
     font-family: Roboto;
     font-weight: 400;
     line-height: 100%;
     letter-spacing: 0%;
   }
+  .favorite-btn{
+    position: absolute;
+  top: 4%;
+  left: 5%;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 1;
+  
+  }
+  .outlined-heart {
+  color: black;
+  font-size: 25px;
+  background-color: transparent;
+}
 }
 
 .cat404 {

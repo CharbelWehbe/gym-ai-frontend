@@ -77,9 +77,42 @@
 
 /* Responsive */
 @media (max-width: 480px) {
-  .cat-grid {
+  /*.cat-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+    .cat-card {
+    flex: none;
+    max-width: 300px;
+    scroll-snap-align: unset;
+  }*/
+  .logo-image{
+   height:40px;
+  }
+   .cat-grid {
+    display: flex;                  /* switch to horizontal flex */
+    flex-wrap: nowrap;              /* no wrapping */
+    overflow-x: auto;               /* horizontal scroll */
+    scroll-snap-type: x mandatory;  /* snap each card */
+    scroll-behavior: smooth;        /* smooth snap */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;           /* optional spacing under cards */
+  }
+
+  /* hide the scrollbar for a cleaner look */
+  .cat-grid::-webkit-scrollbar {
+    //display: none;
+  }
+
+  .cat-card {
+    flex: 0 0 100%;        /* each card takes full viewport width */
+    scroll-snap-align: start;
+    max-width: none;       /* override any max-width */
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;       /* optional side padding */
+    max-width: 60%;
+    margin-top:10%;
+
   }
   .cat-title {
     font-family: Anton;
@@ -88,17 +121,19 @@
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0%;
-    margin-bottom: 2rem;
+    //margin-bottom: 0.5rem;
+    margin-top:2.5rem;
     //line-height: 100%;
-
     line-height: 96px;
   }
   .cat-card {
-    max-width: 160px;
+    /* max-width: 60%;
+    margin-top:10%; */
+    
   }
 
   .cat-card-title {
-    font-size: 20px;
+    font-size: 25px;
     font-family: Roboto;
     font-weight: 700;
     //font-size: 40px;
@@ -110,7 +145,7 @@
   }
 
   .cat-description {
-    font-size: 15px;
+    font-size: 20px;
     font-family: Roboto;
     font-weight: 400;
     //font-size: 32px;

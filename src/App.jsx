@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import Signin from "./pages/Signin";
 import Layout from "./components/Layout";
 import SpecificCategory from "./pages/SpecificCategory";
+
 function App() {
   return (
     <Layout>

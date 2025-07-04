@@ -1,5 +1,9 @@
-import React from 'react';
+//import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { useParams } from 'react-router-dom';
+import { FaChevronRight, FaHeart ,FaRegHeart} from 'react-icons/fa';
+
 import '../SpecificCategory.css'; 
 
 const categoryData = {
@@ -49,18 +53,60 @@ const SpecificCategory = () => {
   const { categoryId } = useParams();
   const category = categoryData[categoryId];
 
-  if (!category) return <h2 className="cat404">Category not found</h2>;
+  const [favorites, setFavorites] = useState(() => {
+    const stored = localStorage.getItem('favorites');
+    return stored ? JSON.parse(stored) : [];
+  });
+  
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+const toggleFavorite = (item) => {
+    const exists = favorites.find((fav) => fav.title === item.title && fav.image === item.image);
+    if (exists) {
+      setFavorites(favorites.filter((fav) => fav.title !== item.title));
+    } else {
+      setFavorites([...favorites, { ...item, categoryId }]);
+    }
+  };
 
+  const isFavorited = (item) =>
+    favorites.some((fav) => fav.title === item.title && fav.image === item.image);
+
+  if (!category) return <h2 className="cat404">Category not found</h2>;
+  
+  
   return (
     <div className="detail-container">
       <h1 className="detail-title">{category.title}</h1>
       <div className="detail-grid">
         {category.items.map((item, index) => (
           <div key={index} className="detail-card">
+            {/* Heart Favorite Button */}
+            <button
+              className="favorite-btn"
+              onClick={() => toggleFavorite(item)}
+              title="Add to Favorites"
+            >
+              {isFavorited(item) ? (
+    <FaHeart color="red" />
+  ) : (
+    <FaRegHeart className="outlined-heart" />
+  )}
+</button>
             <img src={item.image} alt={item.title} className="detail-img" />
-            <h3 className="Specific-category-title">{item.title}</h3>
 
-            <p className="Specific-category-description">{item.description}</p>
+            <h3 className="Specific-category-title">{item.title}
+                            <span className="arrow-icon"><FaChevronRight /></span>
+
+            </h3>
+ {item.description && (
+              <p className="Specific-category-description">{item.description}</p>
+            )}
+           
+           
+           
+                                {/* <p className="Specific-category-description">{item.description}</p> */}
           </div>
         ))}
       </div>
