@@ -154,7 +154,11 @@ body {
 .update-button:hover {
   background-color: #111;
 }
-
+@media (max-width: 350px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 480px) {
 
   .profile-container {
@@ -236,8 +240,34 @@ body {
     padding:1rem;
 } */
 }
-@media (max-width: 350px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
+
+@media (max-width: 767px)and (min-width: 481px){
+
+ 
+.profile-container{
+  margin-top:25%;
+
+}
+.main-content{
+  //padding-top:15%;
+ //padding-bottom:5%;
+}
+}
+
+/* Tablet View (iPad, etc.) */
+@media (max-width: 1024px)and (min-width: 768px){
+
+
+.profile-container{
+  margin-top:25%;
+
+}
+.main-content{
+  //padding-top:15%;
+  padding-bottom:5%;
+}
+
+
+
+
 }

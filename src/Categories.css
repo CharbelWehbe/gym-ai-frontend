@@ -154,3 +154,20 @@
     text-align: start;
   }
 }
+
+/* Tablet View (iPad, etc.) */
+@media (max-width: 1024px)and (min-width: 821px){
+
+.cat-title{
+  //margin-top:8.5%;
+ padding:4.2%;
+ 
+}
+
+
+
+
+
+
+
+}

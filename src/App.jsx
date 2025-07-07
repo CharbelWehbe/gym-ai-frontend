@@ -6,10 +6,12 @@ import Profile from "./pages/Profile";
 import Signin from "./pages/Signin";
 import Layout from "./components/Layout";
 import SpecificCategory from "./pages/SpecificCategory";
+import ScrollToTop from "./pages/ScrollToTop";
 
 function App() {
   return (
     <Layout>
+      <ScrollToTop/>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       {/* <Route index element={<LandingPage/>}/> */}

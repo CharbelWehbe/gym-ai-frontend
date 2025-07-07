@@ -87,18 +87,17 @@ const toggleFavorite = (item) => {
               className="favorite-btn"
               onClick={() => toggleFavorite(item)}
               title="Add to Favorites"
-            >
+             >
               {isFavorited(item) ? (
-    <FaHeart color="red" />
-  ) : (
-    <FaRegHeart className="outlined-heart" />
-  )}
-</button>
+               <FaHeart color="red" />
+                     ) : (
+               <FaRegHeart className="outlined-heart" />
+                     )}
+              </button>
             <img src={item.image} alt={item.title} className="detail-img" />
 
             <h3 className="Specific-category-title">{item.title}
-                            <span className="arrow-icon"><FaChevronRight /></span>
-
+                   <span className="arrow-icon"><FaChevronRight /></span> 
             </h3>
  {item.description && (
               <p className="Specific-category-description">{item.description}</p>
