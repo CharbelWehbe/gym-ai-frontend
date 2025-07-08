@@ -1,0 +1,175 @@
+.body-image-sorrypage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-img-sorrypage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(40%); /* darkens the image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.sorrypage-logo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; /* adjust size as needed */
+  z-index: 2;
+}
+.back-arrow-sorrypage {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  font-size: 34px;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+.sorry-message {
+  font-family: Poppins Black;
+  font-style: Regular;
+  font-size: 36px;
+  font-weight: 900;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  z-index: 2;
+  color: white;
+}
+.terms-container-sorrypage {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.terms-toggle-sorrypage {
+  font-family: Poppins Light;
+  font-weight: 300;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.terms-toggle-sorrypage:hover{
+    text-decoration: underline;
+
+}
+.terms-box-sorrypage {
+  margin-top: 10px;
+  // background-color: rgba(0, 0, 0, 0.7);
+  padding: 0rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  background: none;
+  border-radius: 0;
+
+  font-family: Poppins Light;
+  font-weight: 300;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.terms-box-sorrypage p strong {
+  font-family: Poppins Black;
+  font-weight: 900;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+@media (max-width: 1024px){
+
+
+.sorrypage-logo {
+  top: 65px;
+  left: 51.8%;
+  width: 250px; /* adjust size as needed */
+}
+.back-arrow-sorrypage {
+  top: 68px;
+  left: 30px;
+  font-size: 60px;
+}
+
+.sorry-message {
+ font-size:50px;
+}
+
+.terms-toggle-sorrypage{
+  font-size:40px;
+  margin-bottom:1.5rem;
+}
+
+.terms-box-sorrypage{
+  font-size:30px;
+}
+.terms-box-sorrypage p strong {
+ 
+  font-size: 35px;
+}
+}
+
+
+
+@media (max-width: 480px) {
+  .sorrypage-logo {
+    top: 65px;
+    width: 140px;
+   left:52%; 
+}
+
+  .back-arrow-sorrypage {
+    top: 70px;
+    font-size: 28px;
+     
+  }
+
+  .terms-toggle-sorrypage {
+    font-size: 30px;
+  }
+
+  .terms-box-sorrypage {
+    font-size: 20px;
+  }
+
+  .terms-box-sorrypage p strong {
+    font-size: 20px;
+  }
+
+  .terms-container-sorrypage {
+    padding: 1rem;
+    bottom: 10px;
+  }
+
+
+}

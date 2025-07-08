@@ -7,21 +7,69 @@ import Signin from "./pages/Signin";
 import Layout from "./components/Layout";
 import SpecificCategory from "./pages/SpecificCategory";
 import ScrollToTop from "./pages/ScrollToTop";
+import SorryPage from "./pages/SorryPage";
+
+
 
 function App() {
   return (
-    <Layout>
-      <ScrollToTop/>
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      {/* <Route index element={<LandingPage/>}/> */}
-      <Route path="/categories" element={<Categories />} />
-      <Route path="/categories/:categoryId" element={<SpecificCategory />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/login" element={<Signin />} />
-    </Routes>
-    </Layout>
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Routes with Layout */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/:categoryId" element={<SpecificCategory />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+
+        {/* Route without Layout */}
+        <Route path="/login" element={<Signin />} />
+        <Route path="/sorrypage" element={<SorryPage />}/>
+      </Routes>
+    </>
   );
 }
 
+
+
+
+
+
+
+
+
+
+
+
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+// function App() {
+//   return (
+//     <Layout>
+//       <ScrollToTop/>
+//     <Routes>
+//       <Route path="/" element={<LandingPage />} />
+//       {/* <Route index element={<LandingPage/>}/> */}
+//       <Route path="/categories" element={<Categories />} />
+//       <Route path="/categories/:categoryId" element={<SpecificCategory />} />
+//       <Route path="/profile" element={<Profile />} />
+//       <Route path="/login" element={<Signin />} />
+//     </Routes>
+//     </Layout>
+    
+//   );
+// }
+
+
