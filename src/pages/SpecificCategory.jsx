@@ -75,7 +75,6 @@ const toggleFavorite = (item) => {
 
   if (!category) return <h2 className="cat404">Category not found</h2>;
   
-  
   return (
     <div className="detail-container">
       <h1 className="detail-title">{category.title}</h1>

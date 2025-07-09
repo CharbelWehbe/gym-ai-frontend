@@ -8,7 +8,7 @@ import Layout from "./components/Layout";
 import SpecificCategory from "./pages/SpecificCategory";
 import ScrollToTop from "./pages/ScrollToTop";
 import SorryPage from "./pages/SorryPage";
-
+import Favorites from "./pages/Favorites";
 
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:categoryId" element={<SpecificCategory />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/favorites" element={<Favorites/>}/>
         </Route>
 
         {/* Route without Layout */}
