@@ -81,86 +81,9 @@
   margin-top: 10px;
   text-align: start;
   color: #fff;
-    padding: 0.5rem 0;
-
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-/*
-  .detail-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }*/
-
-  .detail-grid {
-    display: flex;                  /* switch to horizontal flex */
-    flex-wrap: nowrap;              /* no wrapping */
-    overflow-x: auto;               /* horizontal scroll */
-    scroll-snap-type: x mandatory;  /* snap each card */
-    scroll-behavior: smooth;        /* smooth snap */
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem;           /* optional spacing under cards */
-  }
-
-  /* hide the scrollbar for a cleaner look */
-  .detail-grid::-webkit-scrollbar {
-    //display: none;
-  }
-
-  .detail-card {
-    flex: 0 0 100%;        /* each card takes full viewport width */
-    scroll-snap-align: start;
-    max-width: none;       /* override any max-width */
-    box-sizing: border-box;
-    padding: 1rem 0.5rem;       /* optional side padding */
-    max-width: 70%;
-    //height:100%;
-    margin-top:0%;
-  }
- 
-  .detail-title {
-    font-family: Anton;
-    font-weight: 400;
-    font-size: 60px;
-    line-height: 70px;
-    letter-spacing: 0%;
-    text-align: center;
-    text-transform: uppercase;
-    margin-top:2.5rem;
-  }
-  .Specific-category-title {
-    font-size: 40px;
-    font-family: Roboto;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-transform: uppercase;
-  }
-  .Specific-category-description {
-    font-size: 20px;
-    font-family: Roboto;
-    font-weight: 400;
-    line-height: 100%;
-    letter-spacing: 0%;
-  }
-  .favorite-btn{
-    position: absolute;
-  top: 4%;
-  left: 5%;
-  background: transparent;
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
-  z-index: 1;
+  padding: 0.5rem 0;
   
-  }
-  .outlined-heart {
-  color: black;
-  font-size: 25px;
-  background-color: transparent;
-}
-}
+}    
 
 .cat404 {
   padding: 100px;
@@ -173,8 +96,8 @@
 
 /* Tablet View (iPad, etc.) */
 @media (max-width: 1024px)and (min-width: 821px){
-
-.detail-title{
+  
+  .detail-title{
   //margin-top:8.5%;
  padding:7%;
  
@@ -182,4 +105,81 @@
 
 
 
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+/*  
+  .detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }*/  
+
+  .detail-grid {
+    display: flex;                  /* switch to horizontal flex */
+    flex-wrap: nowrap;              /* no wrapping */
+    overflow-x: auto;               /* horizontal scroll */
+    scroll-snap-type: x mandatory;  /* snap each card */
+    scroll-behavior: smooth;        /* smooth snap */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;           /* optional spacing under cards */
+  }  
+
+  /* hide the scrollbar for a cleaner look */
+  .detail-grid::-webkit-scrollbar {
+    //display: none;
+  }  
+
+  .detail-card {
+    flex: 0 0 100%;        /* each card takes full viewport width */
+    scroll-snap-align: start;
+    max-width: none;       /* override any max-width */
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;       /* optional side padding */
+    max-width: 70%;
+    //height:100%;
+    margin-top:0%;
+  }  
+ 
+  .detail-title {
+    font-family: Anton;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 70px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top:2.5rem;
+  }  
+  .Specific-category-title {
+    font-size: 40px;
+    font-family: Roboto;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+  }  
+  .Specific-category-description {
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }  
+  .favorite-btn{
+    position: absolute;
+  top: 3.5% !important;  
+  left: 5% !important;
+  background: transparent;
+  border: none;
+  font-size: 25px !important;
+  cursor: pointer;
+  z-index: 1;
+  
+  }
+  .outlined-heart {
+  color: black;  
+  font-size: 25px !important;
+  background-color: transparent;
+}  
 }

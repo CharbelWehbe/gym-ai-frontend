@@ -9,7 +9,7 @@ import SpecificCategory from "./pages/SpecificCategory";
 import ScrollToTop from "./pages/ScrollToTop";
 import SorryPage from "./pages/SorryPage";
 import Favorites from "./pages/Favorites";
-
+import VideoPage from "./pages/VideoPage";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path="/categories/:categoryId" element={<SpecificCategory />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorites" element={<Favorites/>}/>
+          <Route path="/videopage/:videoId" element={<VideoPage/>}/>
         </Route>
 
         {/* Route without Layout */}

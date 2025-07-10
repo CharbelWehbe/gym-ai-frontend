@@ -39,7 +39,7 @@ function App() {
             Stay tuned for a day filled with <br />challenges, fun, and prizes.
           </p>
           <video className="promo-video" controls>
-            <source src="/gym-ad2.mp4" type="video/mp4" />
+            <source src="/videos/gym-ad2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
