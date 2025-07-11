@@ -1,5 +1,4 @@
-
-import { useLocation, useParams,useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "../VideoPage.css";
@@ -7,10 +6,9 @@ import "../VideoPage.css";
 export default function VideoPage() {
   const { videoId } = useParams();
   const { state } = useLocation();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const { title, description, video, image,categoryId } = state || {};
-
+  const { title, description, video, image, categoryId } = state || {};
   const [isPlaying, setIsPlaying] = useState(false);
 
   if (!state || !video || !image) {
@@ -19,20 +17,28 @@ export default function VideoPage() {
 
   return (
     <div className="video-container">
-        <button
-        className="back-btn"
-        onClick={() => navigate(`/categories/${categoryId}`)}
-      >
-        <FaArrowLeft /> Back
-      </button>
-      <h1 className="video-title">{title}</h1>
+      {/* <div className="top-bar"> */}
+      <div className="video-header">
 
-      <div className="video-player-wrapper">
+        <button className="back-btn" onClick={() => navigate(`/categories/${categoryId}`)}>
+          <FaArrowLeft /> Back
+        </button>
+      <h1 className="video-title">{title}</h1>
+      </div>
+
+
+      <div className="video-thumbnail-wrapper">
         {!isPlaying ? (
-          <div className="video-thumbnail" onClick={() => setIsPlaying(true)}>
-            <img src={image} alt={title} className="video-thumbnail-img" />
-            <div className="play-button-overlay">▶</div>
-          </div>
+          <div className="video-thumbnail">
+  <img src={image} alt={title} className="video-thumbnail-img" />
+  <div className="video-overlay">
+    <p className="video-description">{description}</p>
+    <p className="video-price">$99.00</p>
+    <button className="subscribe-btn" onClick={() => setIsPlaying(true)}>
+      SUBSCRIBE
+    </button>
+  </div>
+</div>
         ) : (
           <video className="video-player" controls autoPlay>
             <source src={video} type="video/mp4" />
@@ -41,10 +47,82 @@ export default function VideoPage() {
         )}
       </div>
 
-      {description && <p className="video-description">{description}</p>}
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useLocation, useParams,useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import { FaArrowLeft } from "react-icons/fa";
+// import "../VideoPage.css";
+
+// export default function VideoPage() {
+//   const { videoId } = useParams();
+//   const { state } = useLocation();
+//     const navigate = useNavigate();
+
+//   const { title, description, video, image,categoryId } = state || {};
+
+//   const [isPlaying, setIsPlaying] = useState(false);
+
+//   if (!state || !video || !image) {
+//     return <div className="video-error">No video data found for "{videoId}"</div>;
+//   }
+
+//   return (
+//     <div className="video-container">
+//         <button
+//         className="back-btn"
+//         onClick={() => navigate(`/categories/${categoryId}`)}
+//       >
+//         <FaArrowLeft /> Back
+//       </button>
+//       <h1 className="video-title">{title}</h1>
+
+//       <div className="video-player-wrapper">
+//         {!isPlaying ? (
+//           <div className="video-thumbnail" onClick={() => setIsPlaying(true)}>
+//             <img src={image} alt={title} className="video-thumbnail-img" />
+//             <div className="play-button-overlay">▶</div>
+//           </div>
+//         ) : (
+//           <video className="video-player" controls autoPlay>
+//             <source src={video} type="video/mp4" />
+//             Your browser does not support the video tag.
+//           </video>
+//         )}
+//       </div>
+
+//       {description && <p className="video-description">{description}</p>}
+//     </div>
+//   );
+// }
 
 
 

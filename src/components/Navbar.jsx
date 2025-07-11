@@ -26,7 +26,9 @@ export default function Navbar() {
           <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Home</NavLink>
           <NavLink to="/categories" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Categories</NavLink>
           <NavLink to="/favorites" onClick={handleLinkClick} className={({isActive}) => isActive ? "nav-link active-link" : "nav-link"}>Favorites</NavLink>
-        {/* <NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>My Profile</NavLink> */}
+<NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>
+  <span className="mobile-label">My Profile</span>
+</NavLink>
         </div>
 
         <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
