@@ -47,8 +47,8 @@ function App() {
 
 
       {/* Categories Section */}
-      <div className="categories-section">
          <h1 className="categories-title">Categories</h1>
+      <div className="categories-section">
         {categories.map((cat) => (
           <div key={cat.id} className="category-card">
             <img src={cat.image} alt={cat.title} className="category-img" />

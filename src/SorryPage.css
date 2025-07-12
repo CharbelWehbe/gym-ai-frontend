@@ -173,3 +173,41 @@
 
 
 }
+
+
+
+@media (max-width: 413px) {
+  .sorrypage-logo {
+    top: 65px;
+    width: 140px;
+   left:52%; 
+}
+.sorry-message{
+  font-size:25px;
+}
+  .back-arrow-sorrypage {
+    top: 70px;
+    font-size: 28px;
+     
+  }
+
+  .terms-toggle-sorrypage {
+    font-size: 25px;
+    margin:0.5rem;
+  }
+
+  .terms-box-sorrypage {
+    font-size: 20px;
+  }
+
+  .terms-box-sorrypage p strong {
+    font-size: 20px;
+  }
+
+  .terms-container-sorrypage {
+    padding: 1rem;
+    bottom: 8px;
+  }
+
+
+}

@@ -1,6 +1,6 @@
 .favorite-container {
   background-color: #1c1c1c;
-  padding: 7rem 5%;
+  padding: 10rem 5%;
   color: white;
 }
 
@@ -96,12 +96,17 @@
 
 
 /* Tablet View (iPad, etc.)*/
-@media (max-width: 1024px)and (min-width: 821px){
-
-.detail-title{
+@media (max-width: 1024px){
+.favorite-container {
+  background-color: #1c1c1c;
+  padding: 10rem 5%;
+  color: white;
+  padding-bottom:40rem;
+}
+/* .detail-title{
  padding:7%;
  
-}
+} */
 
 } 
 
