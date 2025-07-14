@@ -93,7 +93,19 @@ const toggleFavorite = (item) => {
                <FaRegHeart className="outlined-heart" />
                      )}
               </button>
-            <img src={item.image} alt={item.title} className="detail-img" />
+<Link
+  to={`/videopage/${encodeURIComponent(item.title)}`}
+  state={{
+    title: item.title,
+    image: item.image,
+    description: item.description,
+    video: item.video,
+    categoryId: categoryId,
+  }}
+  className="detail-img-link"
+>
+  <img src={item.image} alt={item.title} className="detail-img" />
+</Link>
 
             {/* <h3 className="Specific-category-title">{item.title}
                    <span className="arrow-icon"><FaChevronRight /></span> 

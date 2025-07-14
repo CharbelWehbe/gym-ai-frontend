@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart,FaChevronRight  } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../Favorites.css';
 
@@ -64,7 +64,13 @@ const Favorites = () => {
                 style={{ cursor: 'pointer' }}
               >
                 <img src={item.image} alt={item.title} className="favorite-img" />
-                <h3 className="favorite-category-title">{item.title}</h3>
+
+
+                <h3 className="favorite-category-title">{item.title}
+
+                                    <FaChevronRight className="favorite-arrow" />
+
+                </h3>
                 {item.description && (
                   <p className="favorite-category-description">{item.description}</p>
                 )}

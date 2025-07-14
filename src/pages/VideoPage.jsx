@@ -8,7 +8,7 @@ export default function VideoPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const { title, description, video, image, categoryId } = state || {};
+  const { title, description, video, image } = state || {};
   const [isPlaying, setIsPlaying] = useState(false);
 
   if (!state || !video || !image) {
@@ -20,7 +20,7 @@ export default function VideoPage() {
       {/* <div className="top-bar"> */}
       <div className="video-header">
 
-        <button className="back-btn" onClick={() => navigate(`/categories/${categoryId}`)}>
+        <button className="back-btn" onClick={() => navigate(-1)}>
           <FaArrowLeft /> Back
         </button>
       <h1 className="video-title">{title}</h1>

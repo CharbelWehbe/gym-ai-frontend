@@ -34,10 +34,10 @@ function App() {
           <p className="info-text">First 3 days will be free then<br /> $99.00 per month</p>
         </div>
         <div className="info-right">
-          <p className="info-highlight">
+          <div className="info-highlight">
             <h2 className="info-right-title"> Don't Miss Out! </h2>
             Stay tuned for a day filled with <br />challenges, fun, and prizes.
-          </p>
+          </div>
           <video className="promo-video" controls>
             <source src="/videos/gym-ad2.mp4" type="video/mp4" />
             Your browser does not support the video tag.

@@ -1,11 +1,16 @@
 import '../App.css';
-import { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { useState ,useEffect} from 'react';
+import { NavLink,useLocation  } from "react-router-dom";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const handleLinkClick = () => setIsOpen(false);
+const location = useLocation();
 
+  // Close the burger menu whenever route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
   return (
     <nav className="navbar transparent-navbar">
       <div className="logo">
@@ -34,7 +39,7 @@ export default function Navbar() {
         <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
        {/* This profile icon shows ONLY on desktop */}
         <div className="profile-icon-desktop">
-          <NavLink to="/profile" onClick={handleLinkClick} className="btn-nav">
+          <NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "btn-nav active-button" : "btn-nav"}>
             <img src="/profile-icon.png" alt="Profile" className="profile-icon" />
           </NavLink>
         </div>

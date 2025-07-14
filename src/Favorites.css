@@ -80,6 +80,11 @@
     padding: 0.5rem 0;
 
 }
+.favorite-arrow{
+    color: #c31afb;
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
 .removed-label {
   color: #ff6666;
   font-size: 14px;
