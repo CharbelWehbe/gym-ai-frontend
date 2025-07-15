@@ -51,7 +51,10 @@ function App() {
       <div className="categories-section">
         {categories.map((cat) => (
           <div key={cat.id} className="category-card">
-            <img src={cat.image} alt={cat.title} className="category-img" />
+            <Link to={`/categories/${cat.id}`}>
+                          <img src={cat.image} alt={cat.title} className="category-img" />
+                        </Link>
+            {/* <img src={cat.image} alt={cat.title} className="category-img" /> */}
             <h3 className="category-title">{cat.title}
                 <Link to={`/categories/${cat.id}`} className="category-arrow">
                       <FaChevronRight />

@@ -40,7 +40,7 @@ const Profile = () => {
 
           <div className="form-group icon-input">
             <label>Mobile Phone</label>
-            <input type="text" placeholder="+12 3456 7890" />
+            <input type="text" placeholder="+12 3456 7890" disabled/>
             <FaPhoneAlt className="input-icon" />
           </div>
 

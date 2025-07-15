@@ -106,7 +106,7 @@
   background-color: #1c1c1c;
   padding: 10rem 5%;
   color: white;
-  padding-bottom:40rem;
+  /* padding-bottom:40rem; */
 }
 /* .detail-title{
  padding:7%;
@@ -192,9 +192,7 @@
   background-color: transparent;
 } */
 
-.footer{
-  
-}
+
 
 }
 

@@ -1,12 +1,11 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-//import "../styles/layout.css";
 import { Outlet } from "react-router-dom";
 import '../App.css'
 
 export default function Layout() {
   return (
-    <div>
+    <div className="layout-container">
       <Navbar />
       <main className="main-content">
         <Outlet />
@@ -15,25 +14,3 @@ export default function Layout() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export default function Layout({ children }) {
-//   return (
-//     <div>
-//       <Navbar />
-//       <main className="main-content">{children}</main>
-//       <Footer />
-//     </div>
-//   );
-// }

@@ -7,7 +7,7 @@
 
 .cat-title {
   font-family: Anton;
-  font-size: 96px;
+  font-size: 90px;
   text-align: center;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -79,7 +79,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .pagination-controls button {
@@ -104,6 +104,25 @@
   font-weight: bold;
   font-size: 16px;
 }
+.pagination-number {
+  padding: 8px 14px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination-number.active {
+  background-color: #c31afb;
+  color: #fff;
+}
+
+.pagination-number:hover:not(.active) {
+  background-color: #444;
+}
 
 /* Tablet View (iPad, etc.) */
 @media (max-width: 1024px)and (min-width: 821px){
@@ -112,10 +131,10 @@
   //margin-top:8.5%;
  padding:4.2%;
 }
-
-
-
-
+.pagination-controls {
+ 
+  margin-top: 30px;
+}
 
 
 
@@ -125,7 +144,10 @@
   .cat-title{
     font-size:70px;
   }
-
+.pagination-controls {
+ 
+  margin-top: 30px;
+}
 }
 
 
@@ -206,5 +228,16 @@
     line-height: 100%;
     letter-spacing: 0%;
     text-align: start;
+  }
+  .pagination-controls{
+    gap:0.2rem;
+  }
+
+ 
+}
+
+@media (max-width: 413px){
+   .pagination-controls button{
+    padding:8px 13px;
   }
 }

@@ -38,40 +38,4 @@ function App() {
 
 
 
-
-
-
-
-
-
-
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-// function App() {
-//   return (
-//     <Layout>
-//       <ScrollToTop/>
-//     <Routes>
-//       <Route path="/" element={<LandingPage />} />
-//       {/* <Route index element={<LandingPage/>}/> */}
-//       <Route path="/categories" element={<Categories />} />
-//       <Route path="/categories/:categoryId" element={<SpecificCategory />} />
-//       <Route path="/profile" element={<Profile />} />
-//       <Route path="/login" element={<Signin />} />
-//     </Routes>
-//     </Layout>
-    
-//   );
-// }
-
-
