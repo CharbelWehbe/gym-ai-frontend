@@ -383,6 +383,14 @@ body {
   max-width: 80%;
   margin-left: 104px;
 }
+
+.viewmore-div {
+  display: flex;
+  align-items:center;
+  flex-direction:column;
+  margin:2rem;
+}
+
 .arrow-button {
   display: flex;
   color: rgb(255, 255, 255);
@@ -845,6 +853,128 @@ body {
   }
 }
 
+@media (max-width: 767px) and (min-width: 481px) {
+  .profile-icon-desktop {
+    display: none;
+  }
+
+  .mobile-label {
+    display: inline;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-link.active-link::after {
+    display: none !important;
+    content: none;
+  }
+
+  .nav-link.active-link {
+    color: #c31afb !important;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    position: absolute;
+    top: 90px;
+    right: 32px;
+    padding: 1.5rem;
+    width: 70%;
+    z-index: 99;
+    border-radius: 20px;
+  }
+
+  .nav-links.open {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .nav-items {
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    display: block;
+    color: white;
+    border-radius: 30px;
+  }
+
+  .button-18 {
+    font-size: 16px;
+    text-align: center;
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+  }
+
+  .btn-nav {
+    font-size: 16px;
+    margin-left: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+  }
+
+  .profile-icon {
+    height: 28px;
+    width: 150px;
+  }
+
+  .body-overlay {
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .body-top-text {
+    font-size: 16px;
+    width: 90%;
+    text-align: center;
+    margin: 200px auto 0 auto;
+  }
+
+  .body-main-text {
+    font-size: 48px;
+    line-height: 48px;
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  .view-classes-btn {
+    font-size: 18px;
+    padding: 0.75rem 2rem;
+    margin: 30px auto;
+    display: block;
+    text-align: center;
+    border-radius: 30px;
+  }
+
+  .body-image {
+    height: 600px;
+    width: 100%;
+  }
+
+  .body-img {
+    filter: brightness(50%);
+  }
+
+
+
+}
 
 /* Responsive text for smaller screens */
 @media (max-width: 480px) {

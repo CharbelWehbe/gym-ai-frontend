@@ -1,4 +1,4 @@
-import '../Profile.css'
+import './Profile.css'
 import image from "/avatar-icon.png";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { MdOutlineCalendarToday } from "react-icons/md";
@@ -40,7 +40,7 @@ const Profile = () => {
 
           <div className="form-group icon-input">
             <label>Mobile Phone</label>
-            <input type="text" placeholder="+12 3456 7890" disabled/>
+            <input type="text" placeholder="+12 3456 7890" disabled />
             <FaPhoneAlt className="input-icon" />
           </div>
 

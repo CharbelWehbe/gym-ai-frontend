@@ -1,7 +1,7 @@
 import { useLocation, useParams, useNavigate } from "react-router-dom";
-import { useState , useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import "../VideoPage.css";
+import "./VideoPage.css";
 
 export default function VideoPage() {
   const { videoId } = useParams();
@@ -11,8 +11,8 @@ export default function VideoPage() {
   const { title, description, video, image } = state || {};
   const [isPlaying, setIsPlaying] = useState(false);
 
-    const videoRef = useRef(null);
- // Scroll to video after it's shown
+  const videoRef = useRef(null);
+  // Scroll to video after it's shown
   useEffect(() => {
     if (isPlaying && videoRef.current) {
       setTimeout(() => {
@@ -26,31 +26,30 @@ export default function VideoPage() {
 
   return (
     <div className="video-container">
-      {/* <div className="top-bar"> */}
       <div className="video-header">
 
         <button className="back-btn" onClick={() => navigate(-1)}>
           <FaArrowLeft /> Back
         </button>
-      <h1 className="video-title">{title}</h1>
+        <h1 className="video-title">{title}</h1>
       </div>
 
 
       <div className="video-thumbnail-wrapper">
         {!isPlaying ? (
           <div className="video-thumbnail">
-  <img src={image} alt={title} className="video-thumbnail-img" />
-  <div className="video-overlay">
-    <p className="video-description">{description}</p>
-    <p className="video-price">$99.00</p>
-    <button className="subscribe-btn" onClick={() => setIsPlaying(true)}>
-      SUBSCRIBE
-    </button>
-  </div>
-</div>
+            <img src={image} alt={title} className="video-thumbnail-img" />
+            <div className="video-overlay">
+              <p className="video-description">{description}</p>
+              <p className="video-price">$99.00</p>
+              <button className="subscribe-btn" onClick={() => setIsPlaying(true)}>
+                SUBSCRIBE
+              </button>
+            </div>
+          </div>
         ) : (
           <video className="video-player" controls autoPlay ref={videoRef} // the video is here
-> 
+          >
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>

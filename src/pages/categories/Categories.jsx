@@ -1,4 +1,4 @@
-import '../Categories.css';
+import './Categories.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
@@ -20,7 +20,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
- ,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -30,7 +30,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -40,7 +40,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -50,7 +50,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -60,7 +60,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -70,7 +70,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -80,7 +80,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -90,7 +90,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },
@@ -100,7 +100,7 @@ const categories = [
   { id: 'flexibility2', title: 'Flexibility Programs', image: '/gym-image-3.png', description: 'Stretch more.' },
   { id: 'cardio2', title: 'Cardio Programs', image: '/gym-image-2.png', description: 'Cardio boost.' },
   { id: 'strength2', title: 'Strength training', image: '/gym-image-1.png', description: 'Lift again.' }
-,{ id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
+  , { id: 'mma', title: 'Mma', image: '/cat7.jpg', description: 'A comprehensive training experience that combines elements of various martial arts disciplines.' },
   { id: 'yoga', title: 'Yoga', image: '/cat8.jpg', description: 'A mind-body practice combining postures, breathing, and meditation for well-being.' },
   { id: 'cycle2', title: 'Lets cycle', image: '/cat6.jpg', description: 'Indoor cycling... again' },
   { id: 'move2', title: 'Move it', image: '/cat5.jpg', description: 'Daily fitness classes again.' },

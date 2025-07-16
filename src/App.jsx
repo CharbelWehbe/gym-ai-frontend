@@ -1,15 +1,15 @@
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/Landingpage";
-import Categories from "./pages/Categories";
-import Profile from "./pages/Profile";
-import Signin from "./pages/Signin";
+import Categories from "./pages/categories/Categories";
+import Profile from "./pages/profile/Profile";
+import Signin from "./pages/signin/Signin";
 import Layout from "./components/Layout";
-import SpecificCategory from "./pages/SpecificCategory";
+import SpecificCategory from "./pages/specificcategory/SpecificCategory";
 import ScrollToTop from "./pages/ScrollToTop";
-import SorryPage from "./pages/SorryPage";
-import Favorites from "./pages/Favorites";
-import VideoPage from "./pages/VideoPage";
+import SorryPage from "./pages/sorrypage/SorryPage";
+import Favorites from "./pages/favorites/Favorites";
+import VideoPage from "./pages/videopage/VideoPage";
 
 function App() {
   return (
@@ -22,13 +22,13 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:categoryId" element={<SpecificCategory />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/favorites" element={<Favorites/>}/>
-          <Route path="/videopage/:videoId" element={<VideoPage/>}/>
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/videopage/:videoId" element={<VideoPage />} />
         </Route>
 
         {/* Route without Layout */}
         <Route path="/login" element={<Signin />} />
-        <Route path="/sorrypage" element={<SorryPage />}/>
+        <Route path="/sorrypage" element={<SorryPage />} />
       </Routes>
     </>
   );

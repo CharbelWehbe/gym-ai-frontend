@@ -1,11 +1,11 @@
 import '../App.css';
-import { useState ,useEffect} from 'react';
-import { NavLink,useLocation  } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const handleLinkClick = () => setIsOpen(false);
-const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleLinkClick = () => setIsOpen(false);
+  const location = useLocation();
 
   // Close the burger menu whenever route changes
   useEffect(() => {
@@ -25,25 +25,25 @@ const location = useLocation();
         <span className="bar"></span>
       </div>
 
-       {/* Navigation Links */}
+      {/* Navigation Links */}
       <div className={`nav-links ${isOpen ? 'open' : ''}`}>
         <div className="nav-items">
           <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Home</NavLink>
           <NavLink to="/categories" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Categories</NavLink>
-          <NavLink to="/favorites" onClick={handleLinkClick} className={({isActive}) => isActive ? "nav-link active-link" : "nav-link"}>Favorites</NavLink>
-<NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>
-  <span className="mobile-label">My Profile</span>
-</NavLink>
+          <NavLink to="/favorites" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>Favorites</NavLink>
+          <NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}>
+            <span className="mobile-label">My Profile</span>
+          </NavLink>
         </div>
 
         <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
-       {/* This profile icon shows ONLY on desktop */}
+        {/* This profile icon shows ONLY on desktop */}
         <div className="profile-icon-desktop">
           <NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "btn-nav active-button" : "btn-nav"}>
             <img src="/profile-icon.png" alt="Profile" className="profile-icon" />
           </NavLink>
         </div>
-        
+
 
       </div>
     </nav>

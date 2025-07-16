@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'; 
 import { FaHeart, FaRegHeart, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import '../Favorites.css';
+import './Favorites.css';
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
