@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft, FaHeart, FaRegHeart } from 'react-icons/fa';
 import './SpecificCategory.css';
@@ -91,6 +91,8 @@ const PAGE_WINDOW = 5;
 const SpecificCategory = () => {
   const { categoryId } = useParams();
   const category = categoryData[categoryId];
+  const containerRef = useRef(null);
+  const gridRef = useRef(null);      // detail-grid - add this
 
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem('favorites');
@@ -104,7 +106,17 @@ const SpecificCategory = () => {
   }, [favorites]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const isMobile = window.innerWidth <= 480; // or 430
+
+    if (isMobile && gridRef.current) {
+      // Scroll the horizontal scroll container to left=0 on page change
+      gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    } else if (containerRef.current) {
+      // Scroll detail-container vertically into view for desktop
+      containerRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [currentPage]);
 
   const totalPages = Math.ceil(category?.items.length / ITEMS_PER_PAGE);
@@ -158,9 +170,9 @@ const SpecificCategory = () => {
   if (!category) return <h2 className="cat404">Category not found</h2>;
 
   return (
-    <div className="detail-container">
+    <div className="detail-container" ref={containerRef}>
       <h1 className="detail-title">{category.title}</h1>
-      <div className="detail-grid">
+      <div className="detail-grid" ref={gridRef}>
         {visibleItems.map((item, index) => (
           <div key={index} className="detail-card">
             <button

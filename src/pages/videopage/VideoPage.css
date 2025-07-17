@@ -76,7 +76,7 @@
   letter-spacing: 0%;
 }
 
-.video-price {
+/* .video-price {
   margin-bottom: 1rem;
   font-family: Roboto;
   font-weight: 400;
@@ -85,7 +85,7 @@
   leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
-}
+} */
 
 .subscribe-btn {
   background: #a334f3;
@@ -123,9 +123,10 @@
     padding-top: 12.5rem;
   }
   .video-title {
-    font-size: 90px;
+    font-size: 80px;
     line-height: 70px;
     margin-top: -1.5rem;
+    margin-bottom: 2rem;
   }
   .video-player {
     margin-top: 5rem;
@@ -140,13 +141,13 @@
     font-family: Roboto;
     font-weight: 400;
     font-style: Regular;
-    font-size: 50px;
+    font-size: 45px;
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
   }
 
-  .video-price {
+  /* .video-price {
     font-family: Roboto;
     font-weight: 400;
     font-style: Regular;
@@ -154,17 +155,18 @@
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
-  }
+  } */
 
   .subscribe-btn {
     padding: 14px 20px;
     font-family: Roboto;
     font-weight: 400;
     font-style: Regular;
-    font-size: 30px;
+    font-size: 25px;
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
+    margin-top: 1rem;
   }
 }
 
@@ -176,13 +178,13 @@
     padding-top: 12.5rem;
   }
   .video-title {
-    font-size: 70px;
+    font-size: 60px;
     line-height: 50px;
     margin-top: -5rem;
   }
 
   .back-btn {
-    font-size: 30px;
+    font-size: 28px;
     top: 2.2rem;
     left: 1rem;
   }
@@ -195,12 +197,11 @@
     padding: 1rem;
   }
 
-  .video-description,
-  .video-price {
+  .video-description {
     font-family: Roboto;
     font-weight: 400;
     font-style: Regular;
-    font-size: 30px;
+    font-size: 35px;
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
@@ -226,30 +227,28 @@
   }
 
   .video-player {
-    margin-top: -0rem;
+    margin-top: 1rem;
   }
-  .video-header{
-        padding:4rem 2rem 2rem ;
-
+  .video-header {
+    padding: 4rem 2rem 2rem;
   }
   .video-title {
-    font-size: 30px;
+    font-size: 35px;
     line-height: 42px;
-    margin-top: -6rem;
+    /* margin-top: -6rem; */
   }
 
   .back-btn {
     font-size: 15px;
-    top: 1.6rem;
+    top: 0rem;
     left: 0rem;
   }
 
-  .video-description,
-  .video-price {
+  .video-description {
     font-family: Roboto;
     font-weight: 400;
     font-style: Regular;
-    font-size: 20px;
+    font-size: 22px;
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
@@ -260,9 +259,54 @@
     font-family: Roboto;
     font-weight: 400;
     font-style: Regular;
-    font-size: 20px;
+    font-size: 16px;
     leading-trim: NONE;
     line-height: 100%;
     letter-spacing: 0%;
+  }
+}
+/* =========================
+    Extra Small Devices (Up to 374px)
+   ========================= */
+@media (max-width: 374px) {
+  .video-header {
+    padding: 3.5rem 1rem 1rem;
+  }
+
+  .video-title {
+    font-size: 28px;
+    line-height: 36px;
+    /* margin-top: 1rem; */
+  }
+
+  .back-btn {
+    font-size: 13px;
+    top: -1rem;
+    left: 0rem;
+    gap: 4px;
+    /* margin-left:0.1rem; */
+  }
+
+  .video-description {
+    font-size: 14px;
+    line-height: 100%;
+  }
+
+  .subscribe-btn {
+    padding: 10px 14px;
+    font-size: 10px;
+    border-radius: 30px;
+  }
+
+  .video-thumbnail-wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .video-overlay {
+    padding: 0.8rem 1rem;
+  }
+
+  .video-player {
+    margin-top: 0.5rem;
   }
 }

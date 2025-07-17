@@ -41,7 +41,7 @@ export default function VideoPage() {
             <img src={image} alt={title} className="video-thumbnail-img" />
             <div className="video-overlay">
               <p className="video-description">{description}</p>
-              <p className="video-price">$99.00</p>
+              {/* <p className="video-price">$99.00</p> */}
               <button className="subscribe-btn" onClick={() => setIsPlaying(true)}>
                 SUBSCRIBE
               </button>

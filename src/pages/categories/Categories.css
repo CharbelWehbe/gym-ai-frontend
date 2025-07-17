@@ -211,3 +211,19 @@
     padding: 8px 13px;
   }
 }
+
+@media (max-width: 320px) {
+  .pagination-controls button {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+  .pagination-number {
+    font-size: 12px !important;
+  }
+  .pagination-number.active {
+    font-size: 12px !important;
+  }
+  .pagination-controls button:disabled {
+    font-size: 12px;
+  }
+}
