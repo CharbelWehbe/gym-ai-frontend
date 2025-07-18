@@ -971,7 +971,9 @@ body {
   .body-img {
     filter: brightness(50%);
   }
-
+  .arrow-button {
+margin-left:0%;
+  }
 
 
 }

@@ -134,6 +134,42 @@
   }
 }
 
+@media (max-width: 720px) and (min-width: 500px) {
+  .sorrypage-logo {
+    top: 65px;
+    width: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .back-arrow-sorrypage {
+    top: 70px;
+    left: 30px;
+    font-size: 38px;
+  }
+
+  .sorry-message {
+    font-size: 32px;
+  }
+
+  .terms-toggle-sorrypage {
+    font-size: 22px;
+  }
+
+  .terms-box-sorrypage {
+    font-size: 18px;
+  }
+
+  .terms-box-sorrypage p strong {
+    font-size: 20px;
+  }
+
+  .terms-container-sorrypage {
+    padding: 1rem;
+    bottom: 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .sorrypage-logo {
     top: 65px;

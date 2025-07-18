@@ -219,6 +219,66 @@
   }
 }
 
+
+@media (max-width: 720px) and (min-width: 500px) {
+  .video-container {
+    padding-top: 11rem;
+  }
+
+  .video-header {
+    padding: 4.5rem 2rem 2rem;
+  }
+
+  .video-title {
+    font-size: 40px;
+    line-height: 46px;
+  }
+
+  .back-btn {
+    font-size: 18px;
+    top: 0.2rem;
+    left: 1rem;
+    gap: 5px;
+  }
+
+  .video-thumbnail-wrapper {
+    padding: 0 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .video-thumbnail-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .video-overlay {
+    padding: 1rem;
+    font-size: 18px;
+  }
+
+  .video-description {
+    font-size: 24px;
+    line-height: 100%;
+  }
+
+  .subscribe-btn {
+    padding: 10px 18px;
+    font-size: 18px;
+    border-radius: 35px;
+    margin-top: 1rem;
+  }
+
+  .video-player {
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+}
+
+
+
+
+
 /* =========================
     Small Devices (Up to 480px)
    ========================= */

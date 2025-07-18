@@ -106,6 +106,77 @@
   }
 }
 
+
+
+@media (max-width: 720px) and (min-width: 500px) {
+  .favorite-container {
+    padding: 8rem 5%;
+  }
+
+  .favorite-title {
+    font-family: Anton;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 70px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+  }
+
+  .favorite-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+
+  .favorite-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    max-width: 70%;
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;
+    margin-top: 0%;
+  }
+
+  .favorite-category-title {
+    font-size: 40px;
+    font-family: Roboto;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: start;
+  }
+
+  .favorite-category-description {
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: start;
+  }
+
+  .favorite-btn {
+    top: 3.5%;
+    left: 5%;
+    font-size: 25px;
+  }
+
+  .outlined-heart {
+    font-size: 25px;
+  }
+
+  .removed-label {
+    font-size: 16px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .favorite-grid {

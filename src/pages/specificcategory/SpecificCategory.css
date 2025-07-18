@@ -108,6 +108,90 @@
   }
 }
 
+
+@media (max-width: 720px) and (min-width: 500px) {
+  .detail-title {
+    font-family: Anton;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 70px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0%;
+    margin-top: 2.5rem;
+    padding: 0 5%;
+  }
+
+  .detail-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+
+  .detail-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    max-width: 70%;
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;
+    margin-top: 0%;
+  }
+
+  .detail-img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .Specific-category-title {
+    font-size: 40px;
+    font-family: Roboto;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    text-align: start;
+  }
+
+  .Specific-category-description {
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: start;
+  }
+
+  .favorite-btn {
+    position: absolute;
+    top: 3.5% !important;
+    left: 5%;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .outlined-heart {
+    color: black;
+    font-size: 25px;
+    background-color: transparent;
+  }
+
+  .specific-pagination-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+
+
 /* Responsive */
 @media (max-width: 480px) {
   .detail-grid {
@@ -145,7 +229,7 @@
     margin-top: 2.5rem;
   }
   .Specific-category-title {
-    font-size: 40px;
+    font-size: 30px;
     font-family: Roboto;
     font-weight: 700;
     line-height: 100%;

@@ -320,6 +320,81 @@
   }
 }
 
+
+@media (max-width: 720px) and (min-width: 500px) {
+  .signin-logo {
+    top: 65px;
+    width: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .back-arrow {
+    top: 70px;
+    left: 30px;
+    font-size: 30px;
+  }
+
+  .signin-form {
+    width: 85%;
+    padding: 14rem 1.5rem 2rem;
+  }
+
+  .signin-title {
+    font-size: 32px;
+  }
+
+  .phone-input {
+    font-size: 20px;
+    padding: 1rem;
+  }
+
+  .continue-button {
+    font-size: 24px;
+    padding: 0.75rem;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom:50%;
+  }
+
+  .react-tel-input .form-control {
+    font-size: 22px !important;
+    padding: 1.5rem;
+  }
+
+  .terms-toggle {
+    font-size: 20px;
+  }
+
+  .terms-box {
+    font-size: 12px;
+    width: 90%;
+  }
+
+  .terms-box p strong {
+    font-size: 20px;
+  }
+
+  .body-image-signin {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .body-img-signin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .terms-container {
+    padding: 1rem;
+    bottom: 10px;
+  }
+}
+
 @media (max-width: 480px) {
   .signin-logo {
     top: 65px;

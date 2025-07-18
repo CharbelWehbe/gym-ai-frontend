@@ -142,6 +142,60 @@
   }
 }
 
+
+@media (max-width: 720px) and (min-width: 500px) {
+  .cat-title {
+    font-size: 60px;
+    line-height: 80px;
+    padding: 0 5%;
+    margin-top: 2rem;
+  }
+
+  .cat-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+
+  .cat-card {
+    flex: 0 0 100%;
+    max-width: 60%;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;
+    margin-top: 10%;
+  }
+
+  .cat-card-title {
+    font-size: 25px;
+  }
+
+  .cat-description {
+    font-size: 18px;
+  }
+
+  .pagination-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .pagination-controls button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .pagination-number {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+
 /* Responsive */
 @media (max-width: 480px) {
   .logo-image {
