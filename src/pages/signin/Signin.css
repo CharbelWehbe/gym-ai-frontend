@@ -397,13 +397,13 @@
 
 @media (max-width: 480px) {
   .signin-logo {
-    top: 65px;
+    top: 50px;
     width: 140px;
     left: 52%;
   }
 
   .back-arrow {
-    top: 70px;
+    top: 55px;
     font-size: 28px;
   }
 
@@ -445,12 +445,14 @@
 
   .body-image-signin {
     flex-direction: column;
-    height: auto;
+    /* height: auto; 
     padding: 2rem 0;
+    width:130%;
+    margin-left:-30%;*/
   }
 
   .body-img-signin {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     height: 100%;
@@ -480,3 +482,85 @@
     margin-left: 25%;
   }
 }
+/*   to fix for smaller devices
+@media (max-width: 430px) {  
+  .body-image-signin {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .body-img-signin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .signin-logo {
+    top: 40px;
+    width: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .back-arrow {
+    top: 45px;
+    left: 20px;
+    font-size: 24px;
+  }
+
+  .signin-form {
+    width: 90%;
+    padding: 15rem 1rem 2rem;
+    background: none;
+  }
+
+  .signin-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .phone-input {
+    font-size: 16px;
+    padding: 0.75rem;
+  }
+
+  .continue-button {
+    font-size: 18px;
+    padding: 0.75rem;
+    width: 100%;
+    margin: 1rem auto 0;
+  }
+
+  .react-tel-input .form-control {
+    font-size: 18px !important;
+    padding: 1rem;
+  }
+
+  .terms-container {
+    padding: 1rem;
+    bottom: 10px;
+    position: relative;
+    width: 100%;
+  }
+
+  .terms-toggle {
+    font-size: 16px;
+  }
+
+  .terms-box {
+    font-size: 14px;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .terms-box p strong {
+    font-size: 16px;
+  }
+}
+*/
