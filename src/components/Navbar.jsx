@@ -1,16 +1,27 @@
 import '../App.css';
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const handleLinkClick = () => setIsOpen(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Close the burger menu whenever route changes
   useEffect(() => {
     setIsOpen(false);
+    const token = localStorage.getItem("token");
+    setIsAuthenticated(!!token);
   }, [location]);
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    navigate("/login"); // Redirect to login page
+  };
   return (
     <nav className="navbar transparent-navbar">
       <div className="logo">
@@ -36,8 +47,13 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-        <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
-        {/* This profile icon shows ONLY on desktop */}
+  {/* Conditionally show Sign In or Logout */}
+        {isAuthenticated ? (
+          <button onClick={handleLogout} className="button-18">Logout</button>
+        ) : (
+          <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
+        )}    
+            {/* This profile icon shows ONLY on desktop */}
         <div className="profile-icon-desktop">
           <NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "btn-nav active-button" : "btn-nav"}>
             <img src="/profile-icon.png" alt="Profile" className="profile-icon" />

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import './Profile.css';
 import image from "/avatar-icon.png";
 import { useEffect, useState } from "react";
@@ -24,7 +17,7 @@ export default function Profile() {
   const [statusMessage, setStatusMessage] = useState('');
   const [loading] = useState(false);
 
-  // ✅ Fetch Profile on Mount
+  //Fetch Profile on Mount
   useEffect(() => {
     const fetchProfile = async () => {
       try {

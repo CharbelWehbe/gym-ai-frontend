@@ -244,3 +244,121 @@ const SpecificCategory = () => {
 };
 
 export default SpecificCategory;
+
+
+
+
+// import "./SpecificCategory.css";
+// import React, { useEffect, useState, useRef } from "react";
+// import { useParams } from "react-router-dom";
+// import api from "../../api";
+// import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+// const ITEMS_PER_PAGE = 8;
+// const PAGE_WINDOW = 5;
+
+// export default function SpecificCategory() {
+//   const { categoryId } = useParams();
+//   const [category, setCategory] = useState(null);
+//   const [videos, setVideos] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     const fetchCategory = async () => {
+//       try {
+//         const response = await api.get(`/public/categories/${categoryId}`);
+//         const categoryData = response.data?.data;
+
+//         setCategory(categoryData);
+//         setVideos(categoryData?.videos || []);
+//       } catch (error) {
+//         console.error("Error fetching specific category:", error);
+//       }
+//     };
+
+//     fetchCategory();
+//   }, [categoryId]);
+
+//   useEffect(() => {
+//     if (containerRef.current) {
+//       containerRef.current.scrollLeft = 0;
+//     }
+//     window.scrollTo({ top: 0, behavior: 'smooth' });
+//   }, [currentPage]);
+
+//   const totalPages = Math.ceil(videos.length / ITEMS_PER_PAGE);
+//   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+//   const visibleVideos = videos.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+//   const handlePageClick = (page) => setCurrentPage(page);
+
+//   const renderPagination = () => {
+//     let startPage = Math.max(1, currentPage - Math.floor(PAGE_WINDOW / 2));
+//     let endPage = startPage + PAGE_WINDOW - 1;
+
+//     if (endPage > totalPages) {
+//       endPage = totalPages;
+//       startPage = Math.max(1, endPage - PAGE_WINDOW + 1);
+//     }
+
+//     const pages = [];
+//     for (let i = startPage; i <= endPage; i++) {
+//       pages.push(
+//         <button
+//           key={i}
+//           onClick={() => handlePageClick(i)}
+//           className={`pagination-number ${i === currentPage ? 'active' : ''}`}
+//         >
+//           {i}
+//         </button>
+//       );
+//     }
+
+//     return pages;
+//   };
+
+//   return (
+//     <div className="detail-container">
+//       {category ? (
+//         <>
+//           <h1 className="detail-title">{category.name}</h1>
+//           <p className="detail-description">{category.description}</p>
+
+//           <div className="detail-grid" ref={containerRef}>
+//             {visibleVideos.map((video) => (
+//               <div key={video.id} className="detail-card">
+//                 <img
+//                   src={`http://localhost:8000/storage/${video.image}`}
+//                   alt={video.title}
+//                   className="detail-img"
+//                 />
+//                 <h3 className="detail-card-title">{video.title}</h3>
+//               </div>
+//             ))}
+//           </div>
+
+//           <div className="pagination-controls">
+//             <button
+//               onClick={() => handlePageClick(currentPage - 1)}
+//               disabled={currentPage === 1}
+//             >
+//               <FaChevronLeft /> Prev
+//             </button>
+
+//             {renderPagination()}
+
+//             <button
+//               onClick={() => handlePageClick(currentPage + 1)}
+//               disabled={currentPage === totalPages}
+//             >
+//               Next <FaChevronRight />
+//             </button>
+//           </div>
+//         </>
+//       ) : (
+//         <p className="cat-loading">Loading category details...</p>
+//       )}
+//     </div>
+//   );
+// }

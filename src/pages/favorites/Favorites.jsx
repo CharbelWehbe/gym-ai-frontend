@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'; 
+import React, { useEffect, useState, useRef } from 'react';
 import { FaHeart, FaRegHeart, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './Favorites.css';
@@ -32,14 +32,11 @@ const Favorites = () => {
     );
     setFavorites(updated);
     localStorage.setItem('favorites', JSON.stringify(updated));
- 
- // Calculate new total pages
-  const newTotalPages = Math.ceil(updated.length / ITEMS_PER_PAGE);
 
-  // If current page is now out of range, go to previous available page
-  if (currentPage > newTotalPages) {
-    setCurrentPage(newTotalPages === 0 ? 1 : newTotalPages);
-  }
+    const newTotalPages = Math.ceil(updated.length / ITEMS_PER_PAGE);
+    if (currentPage > newTotalPages) {
+      setCurrentPage(newTotalPages === 0 ? 1 : newTotalPages);
+    }
   };
 
   const isFavorited = (item) =>
