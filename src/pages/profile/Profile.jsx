@@ -3,7 +3,7 @@ import image from "/avatar-icon.png";
 import { useEffect, useState } from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { MdOutlineCalendarToday } from "react-icons/md";
-import API from "../../api"; // <-- make sure this is your axios instance
+import API from "../../api";
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -14,21 +14,36 @@ export default function Profile() {
     msisdn: '',
   });
 
-  const [statusMessage, setStatusMessage] = useState('');
-  const [loading] = useState(false);
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    dob: '',
+  });
 
-  //Fetch Profile on Mount
+  const [statusMessage, setStatusMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Fetch user profile on mount
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const res = await API.get('/auth/me');
         const data = res.data.data;
+
         setUser({
           first_name: data.first_name || '',
           last_name: data.last_name || '',
           email: data.email || '',
           dob: data.dob || '',
           msisdn: data.msisdn || '',
+        });
+
+        setFormData({
+          first_name: data.first_name || '',
+          last_name: data.last_name || '',
+          email: data.email || '',
+          dob: data.dob || '',
         });
       } catch (error) {
         console.error('Error fetching profile:', error.response?.data || error.message);
@@ -40,52 +55,65 @@ export default function Profile() {
   }, []);
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
- const handleSubmit = async (e) => {
-    e.preventDefault();
 
+  const isFormEmpty = () => {
+    return (
+      !formData.first_name.trim() ||
+      !formData.last_name.trim() ||
+      !formData.email.trim() ||
+      !formData.dob.trim()
+    );
+  };
+
+  const isFormUnchanged = () => {
+    return (
+      formData.first_name === user.first_name &&
+      formData.last_name === user.last_name &&
+      formData.email === user.email &&
+      formData.dob === user.dob
+    );
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatusMessage('');
+
+    if (isFormEmpty()) {
+      setStatusMessage("Please fill out all fields before updating.");
+      return;
+    }
+
+    if (isFormUnchanged()) {
+      setStatusMessage("No changes detected to update.");
+      return;
+    }
+
+    setLoading(true);
     try {
       const token = localStorage.getItem('token');
 
-      await API.put('/auth/profile', {
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-        dob: user.dob,
-      }, {
+      await API.put('/auth/profile', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
+      // ✅ Only update display name AFTER successful update
+      setUser((prev) => ({
+        ...prev,
+        ...formData,
+      }));
+
       setStatusMessage('Profile updated successfully!');
     } catch (error) {
-      console.error(error);
-      setStatusMessage('Failed to update profile');
+      console.error('Update failed:', error.response?.data || error.message);
+      setStatusMessage('Failed to update profile.');
+    } finally {
+      setLoading(false);
     }
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setStatusMessage('');
-  //   setLoading(true);
-
-  //   try {
-  //     await API.put('/auth/profile', {
-  //       first_name: user.first_name,
-  //       last_name: user.last_name,
-  //       email: user.email,
-  //       dob: user.dob,
-  //     });
-
-  //     setStatusMessage(' Profile updated successfully!');
-  //   } catch (error) {
-  //     console.error('Update failed:', error.response?.data || error.message);
-  //     setStatusMessage(' Failed to update profile.');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   return (
     <div className="profile-container">
@@ -114,8 +142,9 @@ export default function Profile() {
             <input
               type="text"
               name="first_name"
-              value={user.first_name}
+              value={formData.first_name}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -124,8 +153,9 @@ export default function Profile() {
             <input
               type="text"
               name="last_name"
-              value={user.last_name}
+              value={formData.last_name}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -134,8 +164,9 @@ export default function Profile() {
             <input
               type="date"
               name="dob"
-              value={user.dob}
+              value={formData.dob}
               onChange={handleChange}
+              required
             />
             <MdOutlineCalendarToday className="input-icon" />
           </div>
@@ -157,8 +188,9 @@ export default function Profile() {
             <input
               type="email"
               name="email"
-              value={user.email}
+              value={formData.email}
               onChange={handleChange}
+              required
             />
             <FaEnvelope className="input-icon" />
           </div>
@@ -181,4 +213,3 @@ export default function Profile() {
     </div>
   );
 }
-

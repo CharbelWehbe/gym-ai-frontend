@@ -1,7 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { FaHeart, FaRegHeart, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import './Favorites.css';
+import React, { useEffect, useState, useRef } from "react";
+import {
+  FaHeart,
+  FaRegHeart,
+  FaChevronRight,
+  FaChevronLeft,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import api from "../../api";
+import "./Favorites.css";
+import { ClipLoader } from "react-spinners";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
@@ -9,47 +16,53 @@ const PAGE_WINDOW = 5;
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('favorites');
-    if (stored) {
-      setFavorites(JSON.parse(stored));
-    }
+    const fetchFavorites = async () => {
+      try {
+        setLoading(true);
+        const res = await api.get("/favorites");
+        setFavorites(res.data || []);
+      } catch (error) {
+        console.error("Failed to fetch favorites", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFavorites();
   }, []);
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollLeft = 0;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
-  const toggleFavorite = (item) => {
-    const updated = favorites.filter(
-      (fav) => fav.title !== item.title || fav.image !== item.image
-    );
-    setFavorites(updated);
-    localStorage.setItem('favorites', JSON.stringify(updated));
-
-    const newTotalPages = Math.ceil(updated.length / ITEMS_PER_PAGE);
-    if (currentPage > newTotalPages) {
-      setCurrentPage(newTotalPages === 0 ? 1 : newTotalPages);
+  const toggleFavorite = async (videoId) => {
+    try {
+      await api.delete(`/favorites/${videoId}`);
+      setFavorites((prev) => prev.filter((fav) => fav.video_id !== videoId));
+    } catch (error) {
+      console.error(
+        "Error removing from favorites:",
+        error.response?.data || error.message
+      );
     }
   };
 
-  const isFavorited = (item) =>
-    favorites.some((fav) => fav.title === item.title && fav.image === item.image);
+  const isFavorited = (videoId) =>
+    favorites.some((fav) => fav.video_id === videoId);
 
   const totalPages = Math.ceil(favorites.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const visibleFavorites = favorites.slice(startIndex, endIndex);
 
-  const handlePageClick = (page) => {
-    setCurrentPage(page);
-  };
+  const handlePageClick = (page) => setCurrentPage(page);
 
   const renderPagination = () => {
     let startPage = Math.max(1, currentPage - Math.floor(PAGE_WINDOW / 2));
@@ -66,62 +79,100 @@ const Favorites = () => {
         <button
           key={i}
           onClick={() => handlePageClick(i)}
-          className={`pagination-number ${i === currentPage ? 'active' : ''}`}
+          className={`pagination-number ${i === currentPage ? "active" : ""}`}
         >
           {i}
         </button>
       );
     }
-
     return pages;
   };
 
   return (
     <div className="favorite-container">
       <h1 className="favorite-title">Favorites</h1>
-      <div className="favorite-grid" ref={containerRef}>
-        {favorites.length === 0 ? (
-          <p className="cat404">No favorites added.</p>
-        ) : (
-          visibleFavorites.map((item, index) => (
-            <div key={index} className="favorite-card">
-              <button
-                className="favorite-btn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleFavorite(item);
-                }}
-                title="Remove from Favorites"
-              >
-                {isFavorited(item) ? (
-                  <FaHeart color="red" />
-                ) : (
-                  <FaRegHeart className="outlined-heart" />
-                )}
-              </button>
+      {loading ? (
+        <div className="loading-spinner">
+          <ClipLoader
+            color="#c31afb"
+            loading={true}
+            size={35}
+            speedMultiplier={1}
+          />
+        </div>
+      ) : favorites.length === 0 ? (
+        <div className="no-favorites">
+          <p>No favorites added.</p>
+        </div>
+      ) : (
+        <div className="favorite-grid" ref={containerRef}>
+          {visibleFavorites.map((item) => {
+            const video = item.video;
+            return (
+              <div key={video.id} className="favorite-card">
+                <button
+                  className="favorite-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(item.video_id);
+                  }}
+                  title="Remove from Favorites"
+                >
+                  {isFavorited(item.video_id) ? (
+                    <FaHeart color="red" />
+                  ) : (
+                    <FaRegHeart className="outlined-heart" />
+                  )}
+                </button>
 
-              <div
-                className="clickable-area"
-                onClick={() =>
-                  navigate(`/videopage/${encodeURIComponent(item.title)}`, {
-                    state: { ...item },
-                  })
-                }
-                style={{ cursor: 'pointer' }}
-              >
-                <img src={item.image} alt={item.title} className="favorite-img" />
-                <h3 className="favorite-category-title">
-                  {item.title}
-                  <FaChevronRight className="favorite-arrow" />
-                </h3>
-                {item.description && (
-                  <p className="favorite-category-description">{item.description}</p>
-                )}
+                <Link
+                  to={`/video/${video.id}`}
+                  state={{
+                    title: video.title,
+                    description: video.description,
+                    video: video.video_file
+                      ? `http://localhost:8000/storage/${video.video_file}`
+                      : null,
+                    image: video.thumbnail_small
+                      ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                      : video.thumbnail_big
+                      ? `http://localhost:8000/storage/${video.thumbnail_big}`
+                      : "/default-thumbnail.jpg",
+                  }}
+                  className="clickable-area"
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  <img
+                    src={
+                      video.thumbnail_small
+                        ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                        : video.thumbnail_big
+                        ? `http://localhost:8000/storage/${video.thumbnail_big}`
+                        : "/default-thumbnail.jpg"
+                    }
+                    alt={video.title}
+                    className="favorite-img"
+                  />
+
+                  <h3 className="favorite-category-title">
+                    {video.title}
+                    <FaChevronRight className="favorite-arrow" />
+                  </h3>
+                  {video.description && (
+                    <p className="favorite-category-description">
+                      {video.description}
+                    </p>
+                  )}
+                </Link>
               </div>
-            </div>
-          ))
-        )}
-      </div>
+            );
+          })}
+        </div>
+      )}
 
       {favorites.length > ITEMS_PER_PAGE && (
         <div className="pagination-controls">

@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import api from '../../api'; // Adjust path if needed
+import { ClipLoader } from "react-spinners";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
@@ -75,8 +76,15 @@ const Categories = () => {
     <div className="cat-section">
       <h1 className="cat-title">Categories</h1>
 
-      {loading ? (
-        <p className="cat-loading">Loading categories...</p>
+     {loading ? (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+    <ClipLoader
+      color="#c31afb"
+      loading={true}
+      size={35}
+      speedMultiplier={1}
+    />
+  </div>
       ) : (
         <>
           <div className="cat-grid" ref={containerRef}>

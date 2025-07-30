@@ -27,11 +27,12 @@ const handleSubmit = async (e) => {
 
     const token = res.data.data.token;
     localStorage.setItem('token', token);
-    alert('Login successful!');
-    navigate('/profile');
+    // alert('Login successful!');
+    navigate(-1);
   } catch (error) {
     console.error("Login error:", error.response?.data || error.message);
-    alert('Login failed: Invalid phone number or server error.');
+    // alert('Login failed: Invalid phone number or server error.');
+    navigate('/sorrypage');
   }
 };
 

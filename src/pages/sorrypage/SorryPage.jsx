@@ -13,7 +13,7 @@ export default function Signin() {
 
   return (
     <div className="body-image-sorrypage">
-      <FaArrowLeft className="back-arrow-sorrypage" onClick={() => navigate("/")} />
+      <FaArrowLeft className="back-arrow-sorrypage" onClick={() => navigate(-1)} />
       <Link to="/">
         <img src="/logo-image.png" alt="Logo" className="sorrypage-logo" />
       </Link>

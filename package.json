@@ -19,6 +19,7 @@
     "react-international-phone": "^4.5.0",
     "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^7.6.2",
+    "react-spinners": "^0.17.0",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {

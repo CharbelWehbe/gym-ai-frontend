@@ -5,7 +5,7 @@ import Categories from "./pages/categories/Categories";
 import Profile from "./pages/profile/Profile";
 import Signin from "./pages/signin/Signin";
 import Layout from "./components/Layout";
-import SpecificCategory from "./pages/specificcategory/SpecificCategory";
+import Allvideos from "./pages/allvideos/Allvideos";
 import ScrollToTop from "./pages/ScrollToTop";
 import SorryPage from "./pages/sorrypage/SorryPage";
 import Favorites from "./pages/favorites/Favorites";
@@ -20,10 +20,10 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/categories/:categoryId" element={<SpecificCategory />} />
+          <Route path="/categories/:categoryId" element={<Allvideos />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/videopage/:videoId" element={<VideoPage />} />
+          <Route path="/video/:videoId" element={<VideoPage />} />
         </Route>
 
         {/* Route without Layout */}
