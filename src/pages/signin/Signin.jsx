@@ -6,6 +6,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
 
 export default function Signin() {
   // const [countryCode] = useState('+961');
@@ -14,6 +15,8 @@ export default function Signin() {
 
   const toggleTerms = () => setShowTerms(!showTerms);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -28,8 +31,8 @@ const handleSubmit = async (e) => {
     const token = res.data.data.token;
     localStorage.setItem('token', token);
     // alert('Login successful!');
-    navigate(-1);
-  } catch (error) {
+      navigate(from, { replace: true });
+    } catch (error) {
     console.error("Login error:", error.response?.data || error.message);
     // alert('Login failed: Invalid phone number or server error.');
     navigate('/sorrypage');

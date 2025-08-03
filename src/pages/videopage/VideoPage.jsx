@@ -66,9 +66,14 @@ export default function VideoPage() {
     return <div className="video-loading">Loading video...</div>;
   }
 
-  if (!videoData.video || !videoData.image) {
-    return <div className="video-error">No video data found for ID "{videoId}"</div>;
-  }
+ 
+if (!videoData.video || !videoData.image) {
+  return (
+    <div className="centered-message">
+      No video data found for "{videoData.title}"
+    </div>
+  );
+}
 
   return (
     <div className="video-container">

@@ -4,8 +4,19 @@ import { useEffect, useState } from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { MdOutlineCalendarToday } from "react-icons/md";
 import API from "../../api";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Profile() {
+  const navigate = useNavigate();
+const location = useLocation();
+const token = localStorage.getItem("token");
+
+useEffect(() => {
+  if (!token) {
+    navigate("/signin", { state: { from: location.pathname }, replace: true });
+  }
+}, [token, navigate, location.pathname]);
+
   const [user, setUser] = useState({
     first_name: '',
     last_name: '',

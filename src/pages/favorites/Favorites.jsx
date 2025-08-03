@@ -42,17 +42,41 @@ const Favorites = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
-  const toggleFavorite = async (videoId) => {
-    try {
-      await api.delete(`/favorites/${videoId}`);
-      setFavorites((prev) => prev.filter((fav) => fav.video_id !== videoId));
-    } catch (error) {
-      console.error(
-        "Error removing from favorites:",
-        error.response?.data || error.message
-      );
-    }
-  };
+  // const toggleFavorite = async (videoId) => {
+  //   try {
+  //     await api.delete(`/favorites/${videoId}`);
+  //     setFavorites((prev) => prev.filter((fav) => fav.video_id !== videoId));
+  //   } catch (error) {
+  //     console.error(
+  //       "Error removing from favorites:",
+  //       error.response?.data || error.message
+  //     );
+  //   }
+  // };
+const toggleFavorite = async (videoId) => {
+  const prevFavorites = [...favorites];
+  const updatedFavorites = prevFavorites.filter((fav) => fav.video_id !== videoId);
+
+  // Optimistically update
+  setFavorites(updatedFavorites);
+
+  // Fix pagination if needed
+  const newTotalPages = Math.ceil(updatedFavorites.length / ITEMS_PER_PAGE);
+  if (currentPage > newTotalPages && newTotalPages > 0) {
+    setCurrentPage(newTotalPages);
+  }
+
+  try {
+    await api.delete(`/favorites/${videoId}`);
+  } catch (error) {
+    console.error(
+      "Error removing from favorites:",
+      error.response?.data || error.message
+    );
+    setFavorites(prevFavorites); // Rollback
+  }
+};
+
 
   const isFavorited = (videoId) =>
     favorites.some((fav) => fav.video_id === videoId);
@@ -91,7 +115,7 @@ const Favorites = () => {
   return (
     <div className="favorite-container">
       <h1 className="favorite-title">Favorites</h1>
-      {loading ? (
+      {/* {loading ? (
         <div className="loading-spinner">
           <ClipLoader
             color="#c31afb"
@@ -104,7 +128,22 @@ const Favorites = () => {
         <div className="no-favorites">
           <p>No favorites added.</p>
         </div>
-      ) : (
+      ) : ( */}
+        {loading || favorites.length === 0 ? (
+  <div className="centered-message">
+    {loading ? (
+      <ClipLoader
+        color="#c31afb"
+        loading={true}
+        size={35}
+        speedMultiplier={1}
+      />
+    ) : (
+      <p>No favorites added.</p>
+    )}
+  </div>
+) : (
+
         <div className="favorite-grid" ref={containerRef}>
           {visibleFavorites.map((item) => {
             const video = item.video;

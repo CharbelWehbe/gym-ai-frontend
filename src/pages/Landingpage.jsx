@@ -58,7 +58,7 @@ function App() {
       {/* Categories Section */}
       <h1 className="categories-title">Categories</h1>
       <div className="categories-section">
-        {categories.map((cat) => (
+        {categories.slice(0, 4).map((cat) => (
           <div key={cat.id} className="category-card">
             <Link to={`/categories/${cat.id}`}>
               <img

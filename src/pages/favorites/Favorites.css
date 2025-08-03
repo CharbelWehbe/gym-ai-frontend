@@ -3,6 +3,16 @@
   padding: 10rem 5%;
   color: white;
 }
+.centered-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* or 100vh if you want full screen */
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+}
 
 .favorite-title {
   font-family: Anton;
@@ -36,7 +46,7 @@
   font-size: 20px;
   background-color: transparent;
 }
-.favorite-card {
+/* .favorite-card {
   position: relative;
   max-width: 300px;
   text-align: center;
@@ -46,6 +56,22 @@
   width: 100%;
   height: 250px;
   object-fit: cover;
+} */
+.favorite-card {
+  position: relative;
+  width: 100%; /* Ensure it fills the column */
+  max-width: 300px;
+  min-height: 380px; /* Optional: fixes height so cards align */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.favorite-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
 }
 
 .favorite-category-title {

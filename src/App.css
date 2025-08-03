@@ -5,7 +5,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+}.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
 }
+
 /* Hamburger styles */
 .hamburger {
   display: none;
@@ -1040,7 +1046,7 @@ margin-left:0%;
     font-family: Poppins;
     font-weight: 400;
     font-style: Regular;
-    font-size: 18px;
+    font-size: 15px;
     leading-trim: CAP_HEIGHT;
     line-height: 34px;
     letter-spacing: 0%;
