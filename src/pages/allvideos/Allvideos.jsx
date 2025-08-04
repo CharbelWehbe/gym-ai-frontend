@@ -85,72 +85,57 @@ const Allvideos = () => {
     return pages;
   };
 
+
   const isFavorited = (video) => {
-    return favorites.some((fav) => fav.video_id === video.id);
+    return favorites.some(
+      (fav) =>
+        fav.video_id === video.id ||
+        fav.id === video.id ||
+        (fav.video && fav.video.id === video.id)
+    );
   };
 
-  // const toggleFavorite = async (video) => {
-  //   const isFav = isFavorited(video);
 
-  //   if (isLoggedIn) {
-  //     try {
-  //       if (isFav) {
-  //         await api.delete(`/favorites/${video.id}`);
-  //         setFavorites((prev) => prev.filter((fav) => fav.video_id !== video.id));
-  //       } else {
-  //         await api.post("/favorites", {
-  //           video_id: video.id,
-  //           portal_id: portalId,
-  //         });
-  //         setFavorites((prev) => [...prev, { video_id: video.id }]);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error updating favorites:", error);
-  //     }
-  //   } else {
-  //     const updatedFavs = isFav
-  //       ? favorites.filter((fav) => fav.video_id !== video.id)
-  //       : [...favorites, { video_id: video.id }];
-  //     localStorage.setItem("guest_favorites", JSON.stringify(updatedFavs));
-  //     setFavorites(updatedFavs);
-  //   }
-  // };
-const toggleFavorite = async (video) => {
-  const isFav = isFavorited(video);
+  const toggleFavorite = async (video) => {
+    const isFav = isFavorited(video);
 
-  if (isLoggedIn) {
-    if (isFav) {
-      setFavorites((prev) => prev.filter((fav) => fav.video_id !== video.id));
-    } else {
-      setFavorites((prev) => [...prev, { video_id: video.id }]);
-    }
-
-    try {
+    if (isLoggedIn) {
       if (isFav) {
-        await api.delete(`/favorites/${video.id}`);
-      } else {
-        await api.post("/favorites", {
-          video_id: video.id,
-          portal_id: portalId,
-        });
-      }
-    } catch (error) {
-      console.error("Error updating favorites:", error);
-      // Roll back the change if API fails
-      if (isFav) {
-        setFavorites((prev) => [...prev, { video_id: video.id }]);
-      } else {
         setFavorites((prev) => prev.filter((fav) => fav.video_id !== video.id));
+      } else {
+        setFavorites((prev) => [...prev, { video_id: video.id }]);
       }
+
+      try {
+        if (isFav) {
+          await api.delete(`/favorites/${video.id}`);
+        } else {
+          await api.post("/favorites", {
+            video_id: video.id,
+            portal_id: portalId,
+          });
+        }
+      } catch (error) {
+        console.error("Error updating favorites:", error);
+        // Roll back the change if API fails
+        if (isFav) {
+          setFavorites((prev) => [...prev, { video_id: video.id }]);
+        } else {
+          setFavorites((prev) =>
+            prev.filter((fav) => fav.video_id !== video.id)
+          );
+        }
+      }
+    } else {
+      const updatedFavs = isFav
+        ? favorites.filter((fav) => fav.id !== video.id)
+        : [...favorites, video]; // store full video object
+
+      localStorage.setItem("guest_favorites", JSON.stringify(updatedFavs));
+      setFavorites(updatedFavs);
     }
-  } else {
-    const updatedFavs = isFav
-      ? favorites.filter((fav) => fav.video_id !== video.id)
-      : [...favorites, { video_id: video.id }];
-    localStorage.setItem("guest_favorites", JSON.stringify(updatedFavs));
-    setFavorites(updatedFavs);
-  }
-};
+  };
+
 
   return (
     <div className="allvideos-section">
@@ -165,6 +150,7 @@ const toggleFavorite = async (video) => {
           <div className="allvideos-grid" ref={containerRef}>
             {visibleVideos.map((video) => (
               <div key={video.id} className="allvideos-card" style={{ position: "relative" }}>
+
                 <button
                   className="favorite-btn"
                   onClick={() => toggleFavorite(video)}
@@ -208,32 +194,26 @@ const toggleFavorite = async (video) => {
                   />
                 </Link>
 
-                {/* <h3 className="allvideos-card-title">
-                  {video.title}
-                  <Link to={`/Allvideos/${video.id}`} className="allvideos-arrow">
+                <div className="allvideos-card-title-wrapper">
+                  <h3 className="allvideos-card-title">{video.title}</h3>
+                  <Link
+                    to={`/video/${video.id}`}
+                    className="allvideos-arrow"
+                    state={{
+                      title: video.title,
+                      description: video.description,
+                      video: video.video_file
+                        ? `http://localhost:8000/storage/${video.video_file}`
+                        : null,
+                      image: video.thumbnail_small
+                        ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                        : null,
+                    }}
+                  >
                     <FaChevronRight />
                   </Link>
-                </h3> */}
-                <div className="allvideos-card-title-wrapper">
-  <h3 className="allvideos-card-title">{video.title}</h3>
-<Link
-  to={`/video/${video.id}`}
-  className="allvideos-arrow"
-  state={{
-    title: video.title,
-    description: video.description,
-    video: video.video_file
-      ? `http://localhost:8000/storage/${video.video_file}`
-      : null,
-    image: video.thumbnail_small
-      ? `http://localhost:8000/storage/${video.thumbnail_small}`
-      : null,
-  }}
->
-  <FaChevronRight />
-</Link>
 
-</div>
+                </div>
 
                 <p className="allvideos-description">{video.description}</p>
               </div>

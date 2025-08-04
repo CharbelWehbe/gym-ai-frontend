@@ -17,11 +17,11 @@ export default function Signin() {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || "/";
+  console.log("from:",from);
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const fullNumber = phone; // match exactly what’s in DB
-  console.log("Phone number (msisdn):", fullNumber);
+  const fullNumber = phone;
 
   try {
     const res = await axios.post('http://127.0.0.1:8000/api/auth/login', {
@@ -30,11 +30,38 @@ const handleSubmit = async (e) => {
 
     const token = res.data.data.token;
     localStorage.setItem('token', token);
-    // alert('Login successful!');
-      navigate(from, { replace: true });
-    } catch (error) {
+
+    const portalId = localStorage.getItem("portal_id");
+
+    // Migrate guest favorites to logged-in user
+    const guestFavorites = JSON.parse(localStorage.getItem('guest_favorites')) || [];
+
+    for (const fav of guestFavorites) {
+      const videoId = fav.video_id || fav.id; // handle both guest shapes
+
+      try {
+        await axios.post(
+          'http://127.0.0.1:8000/api/favorites',
+          {
+            video_id: videoId,
+            portal_id: portalId,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }
+          }
+        );
+      } catch (err) {
+        console.warn(`Could not migrate favorite video ${videoId}`, err);
+      }
+    }
+
+    localStorage.removeItem('guest_favorites'); // ✅ cleanup after syncing
+
+    navigate(-1); // or: navigate(from, { replace: true });
+  } catch (error) {
     console.error("Login error:", error.response?.data || error.message);
-    // alert('Login failed: Invalid phone number or server error.');
     navigate('/sorrypage');
   }
 };

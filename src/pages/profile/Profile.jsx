@@ -13,7 +13,7 @@ const token = localStorage.getItem("token");
 
 useEffect(() => {
   if (!token) {
-    navigate("/signin", { state: { from: location.pathname }, replace: true });
+    navigate("/login", { state: { from: location.pathname }, replace: true });
   }
 }, [token, navigate, location.pathname]);
 

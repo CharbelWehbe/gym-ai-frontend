@@ -20,13 +20,22 @@ const Favorites = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+
     const fetchFavorites = async () => {
+      setLoading(true);
+      const token = localStorage.getItem("token");
+
       try {
-        setLoading(true);
-        const res = await api.get("/favorites");
-        setFavorites(res.data || []);
+        if (token) {
+          const res = await api.get("/favorites");
+          setFavorites(res.data || []);
+        } else {
+          const guestFavs = JSON.parse(localStorage.getItem("guest_favorites")) || [];
+          setFavorites(guestFavs);
+        }
       } catch (error) {
         console.error("Failed to fetch favorites", error);
+        setFavorites([]);
       } finally {
         setLoading(false);
       }
@@ -42,44 +51,46 @@ const Favorites = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
-  // const toggleFavorite = async (videoId) => {
-  //   try {
-  //     await api.delete(`/favorites/${videoId}`);
-  //     setFavorites((prev) => prev.filter((fav) => fav.video_id !== videoId));
-  //   } catch (error) {
-  //     console.error(
-  //       "Error removing from favorites:",
-  //       error.response?.data || error.message
-  //     );
-  //   }
-  // };
-const toggleFavorite = async (videoId) => {
-  const prevFavorites = [...favorites];
-  const updatedFavorites = prevFavorites.filter((fav) => fav.video_id !== videoId);
 
-  // Optimistically update
-  setFavorites(updatedFavorites);
+  const toggleFavorite = async (videoId) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const prevFavorites = [...favorites];
+      const updatedFavorites = prevFavorites.filter((fav) => (fav.video?.id || fav.video_id) !== videoId);
 
-  // Fix pagination if needed
-  const newTotalPages = Math.ceil(updatedFavorites.length / ITEMS_PER_PAGE);
-  if (currentPage > newTotalPages && newTotalPages > 0) {
-    setCurrentPage(newTotalPages);
-  }
+      // Optimistic update
+      setFavorites(updatedFavorites);
 
-  try {
-    await api.delete(`/favorites/${videoId}`);
-  } catch (error) {
-    console.error(
-      "Error removing from favorites:",
-      error.response?.data || error.message
-    );
-    setFavorites(prevFavorites); // Rollback
-  }
-};
+      const newTotalPages = Math.ceil(updatedFavorites.length / ITEMS_PER_PAGE);
+      if (currentPage > newTotalPages && newTotalPages > 0) {
+        setCurrentPage(newTotalPages);
+      }
+
+      try {
+        await api.delete(`/favorites/${videoId}`);
+      } catch (error) {
+        console.error("Error removing from favorites:", error.response?.data || error.message);
+        setFavorites(prevFavorites); // rollback
+      }
+    } else {
+      // Guest user: update localStorage
+      const prevFavorites = [...favorites];
+      const updatedFavorites = prevFavorites.filter((fav) => (fav.video?.id || fav.video_id || fav.id) !== videoId);
+      localStorage.setItem("guest_favorites", JSON.stringify(updatedFavorites));
+      setFavorites(updatedFavorites);
+
+      const newTotalPages = Math.ceil(updatedFavorites.length / ITEMS_PER_PAGE);
+      if (currentPage > newTotalPages && newTotalPages > 0) {
+        setCurrentPage(newTotalPages);
+      }
+    }
+  };
 
 
+  // const isFavorited = (videoId) =>
+  //   favorites.some((fav) => fav.video_id === videoId);
   const isFavorited = (videoId) =>
-    favorites.some((fav) => fav.video_id === videoId);
+    favorites.some((fav) => (fav.video?.id || fav.video_id || fav.id) === videoId);
 
   const totalPages = Math.ceil(favorites.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -115,49 +126,38 @@ const toggleFavorite = async (videoId) => {
   return (
     <div className="favorite-container">
       <h1 className="favorite-title">Favorites</h1>
-      {/* {loading ? (
-        <div className="loading-spinner">
-          <ClipLoader
-            color="#c31afb"
-            loading={true}
-            size={35}
-            speedMultiplier={1}
-          />
+
+      {loading || favorites.length === 0 ? (
+        <div className="centered-message">
+          {loading ? (
+            <ClipLoader
+              color="#c31afb"
+              loading={true}
+              size={35}
+              speedMultiplier={1}
+            />
+          ) : (
+            <p>No favorites added.</p>
+          )}
         </div>
-      ) : favorites.length === 0 ? (
-        <div className="no-favorites">
-          <p>No favorites added.</p>
-        </div>
-      ) : ( */}
-        {loading || favorites.length === 0 ? (
-  <div className="centered-message">
-    {loading ? (
-      <ClipLoader
-        color="#c31afb"
-        loading={true}
-        size={35}
-        speedMultiplier={1}
-      />
-    ) : (
-      <p>No favorites added.</p>
-    )}
-  </div>
-) : (
+      ) : (
 
         <div className="favorite-grid" ref={containerRef}>
           {visibleFavorites.map((item) => {
-            const video = item.video;
+            const video = item.video || item; // fallback if guest favorites store full video directly
+            const videoId = item.video_id || video.id; // get correct video ID
+
             return (
               <div key={video.id} className="favorite-card">
                 <button
                   className="favorite-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggleFavorite(item.video_id);
+                    toggleFavorite(videoId);
                   }}
                   title="Remove from Favorites"
                 >
-                  {isFavorited(item.video_id) ? (
+                  {isFavorited(videoId) ? (
                     <FaHeart color="red" />
                   ) : (
                     <FaRegHeart className="outlined-heart" />
@@ -175,8 +175,8 @@ const toggleFavorite = async (videoId) => {
                     image: video.thumbnail_small
                       ? `http://localhost:8000/storage/${video.thumbnail_small}`
                       : video.thumbnail_big
-                      ? `http://localhost:8000/storage/${video.thumbnail_big}`
-                      : "/default-thumbnail.jpg",
+                        ? `http://localhost:8000/storage/${video.thumbnail_big}`
+                        : "/default-thumbnail.jpg",
                   }}
                   className="clickable-area"
                   style={{
@@ -190,8 +190,8 @@ const toggleFavorite = async (videoId) => {
                       video.thumbnail_small
                         ? `http://localhost:8000/storage/${video.thumbnail_small}`
                         : video.thumbnail_big
-                        ? `http://localhost:8000/storage/${video.thumbnail_big}`
-                        : "/default-thumbnail.jpg"
+                          ? `http://localhost:8000/storage/${video.thumbnail_big}`
+                          : "/default-thumbnail.jpg"
                     }
                     alt={video.title}
                     className="favorite-img"

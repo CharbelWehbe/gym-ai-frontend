@@ -56,8 +56,8 @@ export default function VideoPage() {
 
   const handleButtonClick = () => {
     if (!isLoggedIn) {
-      navigate("/login");
-      return;
+ navigate("/login");
+     return;
     }
     setIsPlaying(true);
   };
@@ -78,7 +78,7 @@ if (!videoData.video || !videoData.image) {
   return (
     <div className="video-container">
       <div className="video-header">
-        <button className="back-btn" onClick={() => navigate(-1)}>
+        <button className="back-btn" onClick={() =>  navigate(-1)}>
           <FaArrowLeft /> Back
         </button>
         <h1 className="video-title">{videoData.title}</h1>
