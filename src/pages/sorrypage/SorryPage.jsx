@@ -1,7 +1,7 @@
 import './SorryPage.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function Signin() {
@@ -10,7 +10,13 @@ export default function Signin() {
   const toggleTerms = () => setShowTerms(!showTerms);
 
   const navigate = useNavigate();
+const location = useLocation();
 
+  useEffect(() => {
+    if (!location.state?.fromLogin) {
+      navigate("/", { replace: true });
+    }
+  }, [location,navigate]);
   return (
     <div className="body-image-sorrypage">
       <FaArrowLeft className="back-arrow-sorrypage" onClick={() => navigate(-1)} />

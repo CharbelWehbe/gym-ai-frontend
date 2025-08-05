@@ -111,7 +111,7 @@ useEffect(() => {
         },
       });
 
-      // ✅ Only update display name AFTER successful update
+      //  Only update display name AFTER successful update
       setUser((prev) => ({
         ...prev,
         ...formData,

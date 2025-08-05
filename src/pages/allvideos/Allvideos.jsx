@@ -4,10 +4,10 @@ import { FaChevronRight, FaChevronLeft, FaHeart, FaRegHeart } from "react-icons/
 import api from "../../api";
 import "./Allvideos.css";
 import { ClipLoader } from "react-spinners";
+import { portalId,BASE_IMAGE_URL } from "../../config";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
-const portalId = 1;
 
 const Allvideos = () => {
   const { categoryId } = useParams();
@@ -137,20 +137,24 @@ const Allvideos = () => {
   };
 
 
-  return (
-    <div className="allvideos-section">
-      <h1 className="allvideos-title">{categoryName}</h1>
+ return (
+  <div className="allvideos-section">
+    <h1 className="allvideos-title">{categoryName}</h1>
 
-      {loading ? (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
-          <ClipLoader color="#c31afb" loading={true} size={35} speedMultiplier={1} />
-        </div>
-      ) : (
-        <>
+    {loading ? (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+        <ClipLoader color="#c31afb" loading={true} size={35} speedMultiplier={1} />
+      </div>
+    ) : (
+      <>
+        {videos.length === 0 ? (
+          <div style={{ textAlign: "center", padding: "2rem", fontSize: "1.2rem", color: "#666" }}>
+            No videos available in this category.
+          </div>
+        ) : (
           <div className="allvideos-grid" ref={containerRef}>
             {visibleVideos.map((video) => (
               <div key={video.id} className="allvideos-card" style={{ position: "relative" }}>
-
                 <button
                   className="favorite-btn"
                   onClick={() => toggleFavorite(video)}
@@ -164,7 +168,7 @@ const Allvideos = () => {
                     cursor: "pointer",
                     zIndex: 10,
                     fontSize: "1.5rem",
-                    color: isFavorited(video) ? "red" : "grey",
+                    color: isFavorited(video) ? "red" : "black",
                   }}
                 >
                   {isFavorited(video) ? <FaHeart /> : <FaRegHeart />}
@@ -176,17 +180,17 @@ const Allvideos = () => {
                     title: video.title,
                     description: video.description,
                     video: video.video_file
-                      ? `http://localhost:8000/storage/${video.video_file}`
+                      ? `${BASE_IMAGE_URL}/${video.video_file}`
                       : null,
                     image: video.thumbnail_small
-                      ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                      ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
                       : null,
                   }}
                 >
                   <img
                     src={
                       video.thumbnail_small
-                        ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                        ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
                         : "/placeholder-image.png"
                     }
                     alt={video.title}
@@ -203,23 +207,24 @@ const Allvideos = () => {
                       title: video.title,
                       description: video.description,
                       video: video.video_file
-                        ? `http://localhost:8000/storage/${video.video_file}`
+                        ? `${BASE_IMAGE_URL}/${video.video_file}`
                         : null,
                       image: video.thumbnail_small
-                        ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                        ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
                         : null,
                     }}
                   >
                     <FaChevronRight />
                   </Link>
-
                 </div>
 
                 <p className="allvideos-description">{video.description}</p>
               </div>
             ))}
           </div>
+        )}
 
+        {videos.length > 0 && (
           <div className="pagination-controls">
             <button onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
               <FaChevronLeft /> Prev
@@ -231,10 +236,12 @@ const Allvideos = () => {
               Next <FaChevronRight />
             </button>
           </div>
-        </>
-      )}
-    </div>
-  );
+        )}
+      </>
+    )}
+  </div>
+);
+
 };
 
 export default Allvideos;

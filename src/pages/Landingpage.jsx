@@ -5,11 +5,11 @@ import { FaChevronRight } from "react-icons/fa";
 import Layout from "../components/Layout";
 import API from "../api";
 import { ClipLoader } from "react-spinners";
+import { portalId,BASE_IMAGE_URL } from "../config";
 
 function App() {
   const [categories, setCategories] = useState([]);
 
-  const portalId = 1; // Adjust if dynamic
 
   const [heroSlide, setHeroSlide] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -56,7 +56,7 @@ function App() {
           {heroSlide && (
             <div className="body-image">
               <img
-                src={`http://localhost:8000/storage/${heroSlide.background_image}`}
+                src={`${BASE_IMAGE_URL}/${heroSlide.background_image}`}
                 alt="Hero"
                 className="body-img"
               />
@@ -96,7 +96,7 @@ function App() {
               <div key={cat.id} className="category-card">
                 <Link to={`/categories/${cat.id}`}>
                   <img
-                    src={`http://localhost:8000/storage/${cat.image}`}
+                    src={`${BASE_IMAGE_URL}/${cat.image}`}
                     alt={cat.name}
                     className="category-img"
                   />

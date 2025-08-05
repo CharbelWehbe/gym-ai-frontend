@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import api from "../../api";
 import "./Favorites.css";
 import { ClipLoader } from "react-spinners";
+import { BASE_IMAGE_URL } from "../../config";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
@@ -170,12 +171,12 @@ const Favorites = () => {
                     title: video.title,
                     description: video.description,
                     video: video.video_file
-                      ? `http://localhost:8000/storage/${video.video_file}`
+                      ? `${BASE_IMAGE_URL}/${video.video_file}`
                       : null,
                     image: video.thumbnail_small
-                      ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                      ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
                       : video.thumbnail_big
-                        ? `http://localhost:8000/storage/${video.thumbnail_big}`
+                        ? `${BASE_IMAGE_URL}/${video.thumbnail_big}`
                         : "/default-thumbnail.jpg",
                   }}
                   className="clickable-area"
@@ -188,9 +189,9 @@ const Favorites = () => {
                   <img
                     src={
                       video.thumbnail_small
-                        ? `http://localhost:8000/storage/${video.thumbnail_small}`
+                        ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
                         : video.thumbnail_big
-                          ? `http://localhost:8000/storage/${video.thumbnail_big}`
+                          ? `${BASE_IMAGE_URL}/${video.thumbnail_big}`
                           : "/default-thumbnail.jpg"
                     }
                     alt={video.title}

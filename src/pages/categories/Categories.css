@@ -226,7 +226,7 @@
   }
   .cat-title {
     font-family: Anton;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 400;
     text-align: center;
     text-transform: uppercase;
@@ -261,6 +261,12 @@
 }
 
 @media (max-width: 413px) {
+  .cat-card-title {
+    font-size: 15px;
+  }
+.cat-description {
+    font-size: 12px;
+}
   .pagination-controls button {
     padding: 8px 13px;
   }

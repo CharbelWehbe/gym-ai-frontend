@@ -148,6 +148,10 @@ body {
 .update-button:hover {
   background-color: #111;
 }
+
+.form-status{
+  color:white;
+}
 /* Tablet View (iPad, etc.) */
 @media (max-width: 1024px) and (min-width: 768px) {
   .profile-container {

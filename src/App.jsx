@@ -1,5 +1,7 @@
 // src/App.jsx
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+// import { useEffect, useState } from "react";
+
 import LandingPage from "./pages/Landingpage";
 import Categories from "./pages/categories/Categories";
 import Profile from "./pages/profile/Profile";
@@ -12,6 +14,7 @@ import Favorites from "./pages/favorites/Favorites";
 import VideoPage from "./pages/videopage/VideoPage";
 
 function App() {
+
   return (
     <>
       <ScrollToTop />
@@ -26,8 +29,8 @@ function App() {
           <Route path="/video/:videoId" element={<VideoPage />} />
         </Route>
 
-        {/* Route without Layout */}
-        <Route path="/login" element={<Signin />} />
+     
+<Route path="/login" element={<Signin/>}/>
         <Route path="/sorrypage" element={<SorryPage />} />
       </Routes>
     </>

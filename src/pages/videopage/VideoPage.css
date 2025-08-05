@@ -102,7 +102,7 @@
   font-family: Roboto;
   font-weight: 400;
   font-style: Regular;
-  font-size: 40px;
+  font-size: 30px;
   leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
@@ -146,7 +146,7 @@
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: white;
+  color: #666;
   text-align: center;
 }
 
@@ -328,7 +328,7 @@
     padding: 4rem 2rem 2rem;
   }
   .video-title {
-    font-size: 35px;
+    font-size: 30px;
     line-height: 42px;
     /* margin-top: -6rem; */
   }
@@ -369,13 +369,13 @@
   }
 
   .video-title {
-    font-size: 28px;
+    font-size: 20px;
     line-height: 36px;
     /* margin-top: 1rem; */
   }
 
   .back-btn {
-    font-size: 13px;
+    font-size: 12px;
     top: -1rem;
     left: 0rem;
     gap: 4px;

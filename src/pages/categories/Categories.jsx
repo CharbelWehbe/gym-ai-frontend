@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import api from '../../api'; // Adjust path if needed
 import { ClipLoader } from "react-spinners";
+import { portalId,BASE_IMAGE_URL } from "../../config";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
@@ -14,7 +15,6 @@ const Categories = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const containerRef = useRef(null);
 
-  const portalId = 1; //  Replace with actual portal ID if needed
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -92,7 +92,7 @@ const Categories = () => {
               <div key={cat.id} className="cat-card">
                 <Link to={`/categories/${cat.id}`}>
                   <img
-                    src={`http://localhost:8000/storage/${cat.image}`}
+                    src={`${BASE_IMAGE_URL}/${cat.image}`}
                     alt={cat.name}
                     className="cat-img"
                   />

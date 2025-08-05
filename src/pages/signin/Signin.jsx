@@ -6,65 +6,66 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { useLocation } from "react-router-dom";
+// import { BASE_URL } from "../../config";
+import { BASE_URL } from "../../config"; // adjust the path if needed
 
-export default function Signin() {
+export default function Signin({onLogin }) {
   // const [countryCode] = useState('+961');
   const [phone, setPhone] = useState('');
   const [showTerms, setShowTerms] = useState(false);
 
   const toggleTerms = () => setShowTerms(!showTerms);
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from || "/";
-  console.log("from:",from);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const fullNumber = phone;
 
-  try {
-    const res = await axios.post('http://127.0.0.1:8000/api/auth/login', {
-      msisdn: fullNumber,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const fullNumber = phone;
 
-    const token = res.data.data.token;
-    localStorage.setItem('token', token);
+    try {
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, {
+        msisdn: fullNumber,
+      });
 
-    const portalId = localStorage.getItem("portal_id");
+      const token = res.data.data.token;
+      localStorage.setItem('token', token);
+onLogin?.();
 
-    // Migrate guest favorites to logged-in user
-    const guestFavorites = JSON.parse(localStorage.getItem('guest_favorites')) || [];
+      const portalId = localStorage.getItem("portal_id");
 
-    for (const fav of guestFavorites) {
-      const videoId = fav.video_id || fav.id; // handle both guest shapes
+      // Migrate guest favorites to logged-in user
+      const guestFavorites = JSON.parse(localStorage.getItem('guest_favorites')) || [];
 
-      try {
-        await axios.post(
-          'http://127.0.0.1:8000/api/favorites',
-          {
-            video_id: videoId,
-            portal_id: portalId,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
+      for (const fav of guestFavorites) {
+        const videoId = fav.video_id || fav.id; // handle both guest shapes
+
+        try {
+          await axios.post(
+            `${BASE_URL}/api/favorites`,
+            {
+              video_id: videoId,
+              portal_id: portalId,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              }
             }
-          }
-        );
-      } catch (err) {
-        console.warn(`Could not migrate favorite video ${videoId}`, err);
+          );
+        } catch (err) {
+          console.warn(`Could not migrate favorite video ${videoId}`, err);
+        }
       }
+
+      localStorage.removeItem('guest_favorites'); // cleanup after syncing
+
+      navigate(-1); // or: navigate(from, { replace: true });
+    } catch (error) {
+      console.error("Login error:", error.response?.data || error.message);
+      // navigate('/sorrypage');
+      navigate("/sorrypage", { state: { fromLogin: true } });
     }
-
-    localStorage.removeItem('guest_favorites'); // ✅ cleanup after syncing
-
-    navigate(-1); // or: navigate(from, { replace: true });
-  } catch (error) {
-    console.error("Login error:", error.response?.data || error.message);
-    navigate('/sorrypage');
-  }
-};
+  };
 
   return (
     <div className="body-image-signin">
