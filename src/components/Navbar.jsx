@@ -21,6 +21,8 @@ export default function Navbar() {
     localStorage.removeItem("token");
     setIsAuthenticated(false);
     navigate("/login"); // Redirect to login page
+    window.location.href = "/login"; // force full reload and redirect
+
   };
   return (
     <nav className="navbar transparent-navbar">
@@ -47,13 +49,13 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-  {/* Conditionally show Sign In or Logout */}
+        {/* Conditionally show Sign In or Logout */}
         {isAuthenticated ? (
           <button onClick={handleLogout} className="button-18">Logout</button>
         ) : (
           <NavLink to="/login" onClick={handleLinkClick} className={({ isActive }) => isActive ? "button-18 active-button" : "button-18"}>Sign In</NavLink>
-        )}    
-            {/* This profile icon shows ONLY on desktop */}
+        )}
+        {/* This profile icon shows ONLY on desktop */}
         <div className="profile-icon-desktop">
           <NavLink to="/profile" onClick={handleLinkClick} className={({ isActive }) => isActive ? "btn-nav active-button" : "btn-nav"}>
             <img src="/profile-icon.png" alt="Profile" className="profile-icon" />

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import api from "../../api";
 import "./Favorites.css";
 import { ClipLoader } from "react-spinners";
-import { BASE_IMAGE_URL } from "../../config";
+import { BASE_IMAGE_URL, portalId } from "../../config";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
@@ -28,7 +28,11 @@ const Favorites = () => {
 
       try {
         if (token) {
-          const res = await api.get("/favorites");
+          // const portalId = localStorage.getItem("portal_id"); // or hardcoded for now: const portalId = 1;
+
+          const res = await api.get(`/favorites/${portalId}`);
+          // const res = await api.get("/favorites");
+
           setFavorites(res.data || []);
         } else {
           const guestFavs = JSON.parse(localStorage.getItem("guest_favorites")) || [];
@@ -146,7 +150,10 @@ const Favorites = () => {
         <div className="favorite-grid" ref={containerRef}>
           {visibleFavorites.map((item) => {
             const video = item.video || item; // fallback if guest favorites store full video directly
+            // const video = item.video || {};
+
             const videoId = item.video_id || video.id; // get correct video ID
+            // const videoId = item.video_id;
 
             return (
               <div key={video.id} className="favorite-card">

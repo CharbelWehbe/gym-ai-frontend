@@ -4,7 +4,7 @@ import { FaChevronRight, FaChevronLeft, FaHeart, FaRegHeart } from "react-icons/
 import api from "../../api";
 import "./Allvideos.css";
 import { ClipLoader } from "react-spinners";
-import { portalId,BASE_IMAGE_URL } from "../../config";
+import { portalId, BASE_IMAGE_URL } from "../../config";
 
 const ITEMS_PER_PAGE = 8;
 const PAGE_WINDOW = 5;
@@ -35,14 +35,21 @@ const Allvideos = () => {
 
         const catRes = await api.get(`/public/categories/${categoryId}`);
         setCategoryName(catRes.data.data?.name || "Allvideos");
-
         if (isLoggedIn) {
-          const favRes = await api.get("/favorites");
+          const favRes = await api.get(`/favorites/${portalId}`);
           setFavorites(Array.isArray(favRes.data) ? favRes.data : []);
         } else {
           const localFavs = JSON.parse(localStorage.getItem("guest_favorites")) || [];
           setFavorites(localFavs);
         }
+
+        // if (isLoggedIn) {
+        //   const favRes = await api.get("/favorites");
+        //   setFavorites(Array.isArray(favRes.data) ? favRes.data : []);
+        // } else {
+        //   const localFavs = JSON.parse(localStorage.getItem("guest_favorites")) || [];
+        //   setFavorites(localFavs);
+        // }
       } catch (error) {
         console.error("Error fetching data:", error);
         setVideos([]);
@@ -137,72 +144,45 @@ const Allvideos = () => {
   };
 
 
- return (
-  <div className="allvideos-section">
-    <h1 className="allvideos-title">{categoryName}</h1>
+  return (
+    <div className="allvideos-section">
+      <h1 className="allvideos-title">{categoryName}</h1>
 
-    {loading ? (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
-        <ClipLoader color="#c31afb" loading={true} size={35} speedMultiplier={1} />
-      </div>
-    ) : (
-      <>
-        {videos.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "2rem", fontSize: "1.2rem", color: "#666" }}>
-            No videos available in this category.
-          </div>
-        ) : (
-          <div className="allvideos-grid" ref={containerRef}>
-            {visibleVideos.map((video) => (
-              <div key={video.id} className="allvideos-card" style={{ position: "relative" }}>
-                <button
-                  className="favorite-btn"
-                  onClick={() => toggleFavorite(video)}
-                  title={isFavorited(video) ? "Remove from Favorites" : "Add to Favorites"}
-                  style={{
-                    position: "absolute",
-                    top: "10px",
-                    left: "10px",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    zIndex: 10,
-                    fontSize: "1.5rem",
-                    color: isFavorited(video) ? "red" : "black",
-                  }}
-                >
-                  {isFavorited(video) ? <FaHeart /> : <FaRegHeart />}
-                </button>
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+          <ClipLoader color="#c31afb" loading={true} size={35} speedMultiplier={1} />
+        </div>
+      ) : (
+        <>
+          {videos.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "2rem", fontSize: "1.2rem", color: "#666" }}>
+              No videos available in this category.
+            </div>
+          ) : (
+            <div className="allvideos-grid" ref={containerRef}>
+              {visibleVideos.map((video) => (
+                <div key={video.id} className="allvideos-card" style={{ position: "relative" }}>
+                  <button
+                    className="favorite-btn"
+                    onClick={() => toggleFavorite(video)}
+                    title={isFavorited(video) ? "Remove from Favorites" : "Add to Favorites"}
+                    style={{
+                      position: "absolute",
+                      top: "10px",
+                      left: "10px",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      zIndex: 10,
+                      fontSize: "1.5rem",
+                      color: isFavorited(video) ? "red" : "black",
+                    }}
+                  >
+                    {isFavorited(video) ? <FaHeart /> : <FaRegHeart />}
+                  </button>
 
-                <Link
-                  to={`/video/${video.id}`}
-                  state={{
-                    title: video.title,
-                    description: video.description,
-                    video: video.video_file
-                      ? `${BASE_IMAGE_URL}/${video.video_file}`
-                      : null,
-                    image: video.thumbnail_small
-                      ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
-                      : null,
-                  }}
-                >
-                  <img
-                    src={
-                      video.thumbnail_small
-                        ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
-                        : "/placeholder-image.png"
-                    }
-                    alt={video.title}
-                    className="allvideos-img"
-                  />
-                </Link>
-
-                <div className="allvideos-card-title-wrapper">
-                  <h3 className="allvideos-card-title">{video.title}</h3>
                   <Link
                     to={`/video/${video.id}`}
-                    className="allvideos-arrow"
                     state={{
                       title: video.title,
                       description: video.description,
@@ -214,33 +194,60 @@ const Allvideos = () => {
                         : null,
                     }}
                   >
-                    <FaChevronRight />
+                    <img
+                      src={
+                        video.thumbnail_small
+                          ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
+                          : "/placeholder-image.png"
+                      }
+                      alt={video.title}
+                      className="allvideos-img"
+                    />
                   </Link>
+
+                  <div className="allvideos-card-title-wrapper">
+                    <h3 className="allvideos-card-title">{video.title}</h3>
+                    <Link
+                      to={`/video/${video.id}`}
+                      className="allvideos-arrow"
+                      state={{
+                        title: video.title,
+                        description: video.description,
+                        video: video.video_file
+                          ? `${BASE_IMAGE_URL}/${video.video_file}`
+                          : null,
+                        image: video.thumbnail_small
+                          ? `${BASE_IMAGE_URL}/${video.thumbnail_small}`
+                          : null,
+                      }}
+                    >
+                      <FaChevronRight />
+                    </Link>
+                  </div>
+
+                  <p className="allvideos-description">{video.description}</p>
                 </div>
+              ))}
+            </div>
+          )}
 
-                <p className="allvideos-description">{video.description}</p>
-              </div>
-            ))}
-          </div>
-        )}
+          {videos.length > 0 && (
+            <div className="pagination-controls">
+              <button onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
+                <FaChevronLeft /> Prev
+              </button>
 
-        {videos.length > 0 && (
-          <div className="pagination-controls">
-            <button onClick={() => handlePageClick(currentPage - 1)} disabled={currentPage === 1}>
-              <FaChevronLeft /> Prev
-            </button>
+              {renderPagination()}
 
-            {renderPagination()}
-
-            <button onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === totalPages}>
-              Next <FaChevronRight />
-            </button>
-          </div>
-        )}
-      </>
-    )}
-  </div>
-);
+              <button onClick={() => handlePageClick(currentPage + 1)} disabled={currentPage === totalPages}>
+                Next <FaChevronRight />
+              </button>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
 
 };
 

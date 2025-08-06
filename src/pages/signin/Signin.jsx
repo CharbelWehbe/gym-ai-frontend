@@ -8,15 +8,22 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 // import { BASE_URL } from "../../config";
 import { BASE_URL } from "../../config"; // adjust the path if needed
+import { useEffect } from 'react';
 
-export default function Signin({onLogin }) {
+export default function Signin({ onLogin }) {
   // const [countryCode] = useState('+961');
   const [phone, setPhone] = useState('');
   const [showTerms, setShowTerms] = useState(false);
 
-  const toggleTerms = () => setShowTerms(!showTerms);
   const navigate = useNavigate();
+  const toggleTerms = () => setShowTerms(!showTerms);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/profile");
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +36,7 @@ export default function Signin({onLogin }) {
 
       const token = res.data.data.token;
       localStorage.setItem('token', token);
-onLogin?.();
+      onLogin?.();
 
       const portalId = localStorage.getItem("portal_id");
 
@@ -59,13 +66,14 @@ onLogin?.();
 
       localStorage.removeItem('guest_favorites'); // cleanup after syncing
 
-      navigate(-1); // or: navigate(from, { replace: true });
+      navigate("/profile"); // or: navigate(from, { replace: true });
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
       // navigate('/sorrypage');
       navigate("/sorrypage", { state: { fromLogin: true } });
     }
   };
+
 
   return (
     <div className="body-image-signin">

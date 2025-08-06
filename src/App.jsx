@@ -1,7 +1,6 @@
 // src/App.jsx
 import { Routes, Route, Navigate } from "react-router-dom";
 // import { useEffect, useState } from "react";
-
 import LandingPage from "./pages/Landingpage";
 import Categories from "./pages/categories/Categories";
 import Profile from "./pages/profile/Profile";
@@ -29,8 +28,14 @@ function App() {
           <Route path="/video/:videoId" element={<VideoPage />} />
         </Route>
 
-     
-<Route path="/login" element={<Signin/>}/>
+        <Route
+          path="/login"
+          element={
+            localStorage.getItem("token") ? <Navigate to="/profile" /> : <Signin />
+          }
+        />
+
+        {/* <Route path="/login" element={<Signin/>}/> */}
         <Route path="/sorrypage" element={<SorryPage />} />
       </Routes>
     </>
