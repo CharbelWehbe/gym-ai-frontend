@@ -81,14 +81,10 @@ VITE_BASE_URL=http://localhost:8000
 VITE_BASE_IMAGE_URL=http://localhost:8000/storage
 📸 Screenshots
 
-(Add screenshots here — very important for your portfolio)
+
 
 ### SignUp Page
-![SignUp](src/assets/screenshots/SignUp.png)
-
-### SignUp Page
-![SignUp](assets/screenshots/SignUp.png)
-
+![SignUp](https://github.com/CharbelWehbe/gym-ai-frontend/blob/ad59a88ebb053d25e5ccc40e86c75417d89257e3/src/assets/screenshots/SignUp.png)
 
 
 👥 Contributors
