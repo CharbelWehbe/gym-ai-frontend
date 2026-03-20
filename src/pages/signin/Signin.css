@@ -12,23 +12,25 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(50%); /* darkens the image */
+  filter: brightness(50%);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
 }
+
 .signin-logo {
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px; /* adjust size as needed */
+  width: 150px;
   z-index: 2;
 }
+
 .back-arrow {
   position: absolute;
-  top: 25px;
+  top: 45px;
   left: 30px;
   font-size: 34px;
   color: white;
@@ -60,72 +62,92 @@
 
 .phone-input-wrapper {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 1rem;
 }
 
+/* PHONE INPUT */
 .phone-input {
   font-family: Poppins Light;
   font-size: 32px;
   font-weight: 300;
-  line-height: 100%;
-  letter-spacing: 0%;
-  flex: 1;
   padding: 1.5rem;
   border-radius: 14px;
   border: none;
   background-color: #d9d9d9;
   color: black;
 }
-.react-tel-input .country-list {
-  color: black;
-}
-.react-tel-input .selected-flag {
-  border-radius: 14px !important;
-}
-.react-tel-input .flag-dropdown {
-  border-radius: 14px !important;
-  border:1px solid white !important;
+
+/* PASSWORD CONTAINER */
+.password-container {
+  position: relative;
+  width: 100%;
 }
 
-.react-tel-input .form-control {
-  border-radius: 14px !important;
+/* PASSWORD INPUT (Styled like phone input) */
+.signin-password-input {
+  font-family: Poppins Light;
+  /* font-size: 32px; */
+  font-weight: 300;
+  padding: 1.7rem;
+  width: 100%;
+  height : 35px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
 }
-.react-tel-input .flag-dropdown {
-  border-radius: 14px !important ;
-  background-color: white !important;
-}
-.react-tel-input .flag-dropdown:hover {
-  border-radius: 14px !important ;
-}
-.react-tel-input .flag-dropdown.open .selected-flag {
-  border-radius: 14px !important;
-}
-.react-tel-input .flag-dropdown.open {
-  border-radius: 14px !important;
+
+/* EYE ICON */
+.password-eye {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .continue-button {
   font-family: Poppins Medium;
-  font-weight: 500;
   font-size: 32px;
-  line-height: 100%;
-  letter-spacing: 0%;
-
   margin-top: 1rem;
   padding: 0.75rem;
   border: none;
   border-radius: 14px;
-  background: linear-gradient(90deg, #c31afb 0%, #565fff 100%);
-
+  background: #f97316;
   color: white;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .continue-button:hover {
-  background: #3b0ca5;
+  background: #fb923c;
 }
 
+/* SIGNUP LINK */
+.signup-question {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+
+.signup-link {
+  color: #f97316;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* TERMS SECTION */
 .terms-container {
   position: absolute;
   bottom: 20px;
@@ -143,138 +165,79 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-family: Poppins, sans-serif;
   font-size: 16px;
 }
+
 .terms-toggle:hover {
   text-decoration: underline;
 }
+
 .terms-box {
   margin-top: 10px;
-  padding: 0rem;
-  border-radius: 12px;
   width: 90%;
   max-width: 500px;
-  font-family: Poppins, sans-serif;
   font-size: 14px;
-  line-height: 1.5;
   text-align: center;
-  background: none;
-  border-radius: 0;
+  color: white;
 }
+
 .terms-box p strong {
-  font-family: Poppins Black;
-  font-weight: 900;
-  font-style: Regular;
   font-size: 20px;
-  leading-trim: NONE;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
+  font-weight: 900;
 }
+.signin-error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+/* ===========================
+    RESPONSIVENESS
+=========================== */
 
 @media (max-width: 1024px) {
   .signin-logo {
     top: 65px;
-    left: 51.8%;
-    width: 250px; /* adjust size as needed */
+    width: 250px;
   }
+
   .back-arrow {
     top: 68px;
-    left: 30px;
     font-size: 60px;
   }
-  .signin-form {
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    color: white;
-    width: 65%;
 
-    background: none;
+  .signin-form {
+    width: 65%;
   }
 
   .signin-title {
-    font-family: Poppins Medium;
     font-size: 50px;
-    text-align: center;
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: 0%;
   }
 
-  .phone-input {
-    font-family: Poppins Light;
+  .phone-input,
+  .signin-password-input {
     font-size: 32px;
-    font-weight: 300;
-    line-height: 100%;
-    letter-spacing: 0%;
-    flex: 1;
     padding: 3rem;
-    border-radius: 14px;
-    border: none;
-    background-color: #d9d9d9;
-    color: black;
+  }
+
+  .password-eye {
+    font-size: 45px;
   }
 
   .continue-button {
-    font-family: Poppins Medium;
-    font-weight: 500;
     font-size: 45px;
-    line-height: 100%;
-    letter-spacing: 0%;
-
-    margin-top: 1rem;
-    padding: 1rem;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(90deg, #c31afb 0%, #565fff 100%);
     width: 50%;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
     margin-left: 25%;
-  }
-
-  .react-tel-input .form-control {
-    font-size: 30px !important;
-    padding: 2.5rem;
-  }
-  .react-tel-input .selected-flag {
-  }
-  .react-tel-input .country-list {
-    width: 300px !important;
-    height: 200px !important;
-    font-size: 200% !important;
-  }
-
-  .terms-toggle {
-    font-size: 30px;
-  }
-
-  .terms-box {
-    font-size: 18px;
-  }
-
-  .terms-box p strong {
-    font-size: 25px;
+    padding: 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .signin-logo {
-    top: 65px;
     width: 200px;
-    left: 52%;
   }
 
   .back-arrow {
-    top: 68px;
-    left: 30px;
     font-size: 42px;
   }
 
@@ -282,57 +245,34 @@
     width: 65%;
     padding: 2rem 3.5rem;
   }
-  .signin-form {
-  }
+
   .signin-title {
     font-size: 26px;
-    text-align: center;
   }
 
-  .phone-input {
+  .phone-input,
+  .signin-password-input {
     font-size: 18px;
     padding: 1rem;
   }
 
+  .password-eye {
+    font-size: 32px;
+  }
+
   .continue-button {
     font-size: 30px;
-    padding: 0.75rem;
     width: 50%;
     margin-left: 25%;
   }
-
-  .react-tel-input .form-control {
-    font-size: 25px !important;
-    padding: 1.6rem;
-  }
-
-  .terms-toggle {
-    font-size: 26px;
-  }
-
-  .terms-box {
-    font-size: 16px;
-    padding: 0rem;
-    width: 90%;
-  }
-
-  .terms-box p strong {
-    font-size: 18px;
-  }
 }
-
 
 @media (max-width: 720px) and (min-width: 481px) {
   .signin-logo {
-    top: 65px;
     width: 160px;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .back-arrow {
-    top: 70px;
-    left: 30px;
     font-size: 30px;
   }
 
@@ -345,66 +285,29 @@
     font-size: 32px;
   }
 
-  .phone-input {
+  .phone-input,
+  .signin-password-input {
     font-size: 20px;
     padding: 1rem;
+  }
+
+  .password-eye {
+    font-size: 28px;
   }
 
   .continue-button {
     font-size: 24px;
-    padding: 0.75rem;
     width: 60%;
     margin-left: 20%;
-    margin-bottom:50%;
-  }
-
-  .react-tel-input .form-control {
-    font-size: 22px !important;
-    padding: 1.5rem;
-  }
-
-  .terms-toggle {
-    font-size: 20px;
-  }
-
-  .terms-box {
-    font-size: 12px;
-    width: 90%;
-  }
-
-  .terms-box p strong {
-    font-size: 20px;
-  }
-
-  .body-image-signin {
-    flex-direction: column;
-    height: auto;
-    padding: 2rem 0;
-  }
-
-  .body-img-signin {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 0;
-  }
-
-  .terms-container {
-    padding: 1rem;
-    bottom: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .signin-logo {
-    top: 50px;
     width: 140px;
-    left: 52%;
   }
 
   .back-arrow {
-    top: 55px;
     font-size: 28px;
   }
 
@@ -417,150 +320,38 @@
     font-size: 28px;
   }
 
-  .phone-input {
+  .phone-input,
+  .signin-password-input {
     font-size: 16px;
     padding: 0.75rem;
   }
 
-  .continue-button {
-    font-size: 18px;
-    padding: 0.75rem;
-  }
-
-  .react-tel-input .form-control {
-    font-size: 20px !important;
-    padding: 1.25rem;
-  }
-
-  .terms-toggle {
-    font-size: 22px;
-  }
-
-  .terms-box {
-    font-size: 12px;
-  }
-
-  .terms-box p strong {
-    font-size: 16px;
-  }
-
-  .body-image-signin {
-    flex-direction: column;
-    /* height: auto; 
-    padding: 2rem 0;
-    width:130%;
-    margin-left:-30%;*/
-  }
-
-  .body-img-signin {
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 0;
-  }
-
-  .terms-container {
-    padding: 0rem;
-    bottom: 10px;
+  .password-eye {
+    font-size: 24px;
   }
 
   .continue-button {
-    font-family: Poppins Medium;
-    font-weight: 500;
     font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
-
-    margin-top: 1rem;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(90deg, #c31afb 0%, #565fff 100%);
     width: 50%;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
     margin-left: 25%;
   }
 }
-/*   to fix for smaller devices*/
-@media (max-width: 390px) {  
-  /* .body-image-signin {
-    flex-direction: column;
-    height: auto;
-    padding: 0;
-    overflow: hidden;
-  }
 
-  .body-img-signin {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-  }
-
-  .signin-logo {
-    top: 40px;
-    width: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .back-arrow {
-    top: 45px;
-    left: 20px;
-    font-size: 24px;
-  }
-
-  .signin-form {
-    width: 90%;
-    padding: 15rem 1rem 2rem;
-    background: none;
-  }
-
-  .signin-title {
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .phone-input {
-    font-size: 16px;
-    padding: 0.75rem;
-  }
-
-  .continue-button {
-    font-size: 18px;
-    padding: 0.75rem;
-    width: 100%;
-    margin: 1rem auto 0;
-  }
-
-  .react-tel-input .form-control {
-    font-size: 18px !important;
-    padding: 1rem;
-  } 
-
-  .terms-container {
-    padding: 1rem;
-    bottom: 10px;
-    position: relative;
-    width: 100%;
-  }
-*/
+@media (max-width: 390px) {
   .terms-toggle {
     font-size: 10px;
   }
 
   .terms-box {
     font-size: 8px;
-    width: 100%;
-    padding: 0rem;
   }
 
-  .terms-box p strong {
-    font-size: 16px;
+  .signin-password-input {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+
+  .password-eye {
+    font-size: 20px;
   }
 }

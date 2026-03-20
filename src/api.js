@@ -1,4 +1,3 @@
-// src/api.js
 import axios from "axios";
 import { BASE_URL } from "./config";
 
@@ -12,6 +11,13 @@ const API = axios.create({
     "Content-Type": "application/json",
     Accept: "application/json",
   },
+});
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 // Automatically attach token to each request (if exists)

@@ -1,0 +1,76 @@
+.history-container {
+  max-width: 1000px;
+  margin: 10% auto;
+  padding: 2rem;
+  background: #2e2e2e;
+  border-radius: 16px;
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont,
+    "Roboto", sans-serif;
+  color: #ffffff;
+}
+
+.history-container h1 {
+  font-size: 26px;
+  margin-bottom: 0.5rem;
+}
+
+.history-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.history-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.history-card {
+  background: #3a3a3a;
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+}
+
+.history-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-card h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 16px;
+}
+
+.history-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #e5e5e5;
+}
+
+.history-card-meta {
+  margin-top: 0.3rem;
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+.history-card-badge {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #4ade80;
+  color: #000;
+  font-weight: 600;
+}
+
+.history-actions {
+  margin-top: 1.5rem;
+}
+
+.history-actions a {
+  color: #ff8a3c;
+  text-decoration: none;
+}
+.history-actions a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,307 @@
+/* Page background + layout */
+.ai-planner-page {
+  min-height: 100vh;
+  background-color: #1c1c1c; 
+  display: flex;
+  justify-content: center;
+  padding: 8rem 1rem 2rem; /* top padding for navbar */
+  box-sizing: border-box;
+}
+
+/* Main card container  */
+.ai-planner-container {
+  max-width: 1000px;
+  width: 100%;
+  background: #2e2e2e;
+  border-radius: 16px;
+  padding: 2rem;
+  font-family: Poppins, sans-serif;
+  color: #ffffff;
+}
+
+/* Title */
+.ai-planner-title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+/* Form layout */
+.ai-form {
+  margin-bottom: 1.5rem;
+}
+
+.ai-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.ai-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-form-group label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  color: #ada7a7; 
+}
+
+/* Inputs & selects */
+.ai-form-input,
+.ai-form-select {
+  font-family: Poppins, sans-serif;
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #fafafa;
+  color: #000000;
+  outline: none;
+}
+
+.ai-form-input:focus,
+.ai-form-select:focus {
+  border-color: #c31afb;
+}
+
+/* Full-width field (for longer text inputs) */
+.ai-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Generate button  */
+.ai-generate-button {
+  background: #f97316;
+  color: #fff;
+  margin-top: 1.5rem;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 53px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  width: 201px;
+  height: 52px;
+  transition: opacity 0.2s ease;
+}
+
+.ai-generate-button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.ai-generate-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Error box */
+.ai-error-box {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #f99;
+  background-color: #4a1f1f;
+  color: #ffecec;
+  font-size: 14px;
+}
+
+/* AI plan output */
+.ai-plan-output-wrapper {
+  margin-top: 1rem;
+}
+
+.ai-plan-output-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.ai-plan-output {
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  max-height: 60vh;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Make markdown headings look nice */
+.ai-plan-output h1,
+.ai-plan-output h2,
+.ai-plan-output h3 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.ai-plan-output ul {
+  padding-left: 1.3rem;
+}
+
+
+
+
+
+
+.ai-success-box {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #22c55e;
+  background-color: #14532d;
+  color: #dcfce7;
+  font-size: 14px;
+}
+
+/* Small links inside success box */
+.ai-start-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.ai-start-links a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #f97316;
+  font-weight: 500;
+}
+
+.ai-start-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* ✅ Start Program button area */
+.ai-start-program-container {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ai-start-program-button {
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.15s ease;
+}
+
+.ai-start-program-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+}
+
+.ai-start-program-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Text + links block to the right of the button */
+.ai-start-program-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 14px;
+}
+
+/* Green-ish message text */
+.ai-start-program-note {
+  color: #a7f3d0;
+}
+
+/* Inline links for Today Workout / Today Meal */
+.ai-start-links-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ai-start-links-inline a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #f97316;
+  font-weight: 500;
+}
+
+.ai-start-links-inline a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* Responsive tweaks */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .ai-planner-page {
+    padding-top: 7rem;
+  }
+
+  .ai-planner-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ai-planner-page {
+    padding-top: 5.5rem;
+  }
+
+  .ai-planner-container {
+    padding: 1.2rem;
+  }
+
+  .ai-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .ai-form-group.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .ai-generate-button {
+    width: 100%;
+  }
+
+  .ai-start-program-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ai-start-program-button {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 350px) {
+  .ai-planner-container {
+    padding: 1rem;
+  }
+
+  .ai-plan-output {
+    font-size: 13px;
+  }
+}

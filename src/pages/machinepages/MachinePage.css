@@ -1,0 +1,197 @@
+
+
+/* PAGE WRAPPER */
+.machine-page {
+  width: 100%;
+  min-height: 100vh;
+  background: black; 
+  padding-top: 150px; 
+  padding-bottom: 60px; 
+  display: flex;
+  justify-content: center;
+}
+
+/* MAIN CONTAINER */
+.machine-container {
+  width: 95%;
+  max-width: 1100px;
+  background: #111827;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  border: 1px solid #e3e7eb;
+}
+
+/* LOADER */
+.machine-loader {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER SECTION */
+.machine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.machine-header h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #f97316;
+}
+
+.machine-header a {
+  color: #f97316;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.machine-header a:hover {
+  text-decoration: underline;
+}
+
+/* MACHINE IMAGE */
+.machine-image {
+  width: 100%;
+  height: 260px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 25px;
+}
+
+/* GRID LAYOUT */
+.machine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.machine-section {
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  color: #111;
+}
+
+.machine-section h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.info-text {
+  margin: 6px 0;
+  color: #333;
+  font-size : 2.3rem;
+}
+
+.muted {
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* FORM */
+.machine-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.machine-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+.machine-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cdd2d7;
+  background: #fff;
+  color: #111;
+}
+
+.machine-form input:focus {
+  border-color: #f97316;
+  outline: none;
+}
+
+.machine-form button {
+  background: #f97316;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.machine-form button:hover {
+  background: #ea580c;
+}
+
+.machine-form button:disabled {
+  opacity: 0.6;
+}
+
+/* TOAST */
+.machine-toast {
+  background: #ecfeff;
+  color: #0e7490;
+  border: 1px solid #06b6d4;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* VIDEO */
+.tutorial-video {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+/* CHART */
+.machine-chart-wrapper {
+  margin-top: 30px;
+}
+.machine-chart-wrapper canvas {
+  background-color: white; 
+  border-radius: 14px;      
+}
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+  .machine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .machine-page {
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .machine-container {
+    padding: 20px;
+  }
+
+  .machine-image {
+    height: 200px;
+  }
+
+  .machine-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

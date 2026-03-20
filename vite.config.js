@@ -4,10 +4,13 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),
-        tailwindcss(),
-
-  ],
+  plugins: [react(),tailwindcss(),],
+  // base: '/myproject/',
+   server: {
+    proxy: {
+      "/api": "http://127.0.0.1:8000" // Laravel dev server
+    }
+  }
 })
 
 

@@ -130,7 +130,7 @@ body {
 }
 
 .update-button {
-  background: linear-gradient(86.63deg, #c31afb -8.39%, #565fff 123.39%);
+  background: #f97316;
   color: #fff;
   margin-top: 5%;
   border: none;
@@ -146,7 +146,9 @@ body {
 }
 
 .update-button:hover {
-  background-color: #111;
+  background-color: #fb923c;
+    box-shadow: 0 14px 40px rgba(249, 115, 22, 0.35);
+
 }
 
 .form-status{

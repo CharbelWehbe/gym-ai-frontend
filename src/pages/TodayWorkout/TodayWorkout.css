@@ -1,0 +1,603 @@
+/* TodayWorkout.css */
+
+.today-container {
+  max-width: 1000px;
+  margin: 10% auto;
+  padding: 2rem;
+  background: #2e2e2e;
+  border-radius: 16px;
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, "Roboto",
+    sans-serif;
+  color: #ffffff;
+}
+
+.today-container h1 {
+  font-size: 28px;
+  margin-bottom: 0.5rem;
+}
+
+.today-container h2 {
+  font-size: 20px;
+  margin-bottom: 1.5rem;
+  color: #ff8a3c; /* accent like profile/AI planner */
+}
+
+.today-container p {
+  margin-bottom: 0.75rem;
+}
+
+.today-container.error {
+  border: 1px solid #ff4d4f;
+  background: rgba(255, 77, 79, 0.1);
+  color: #ffcccc;
+}
+
+.today-exercise-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.today-exercise-item {
+  background: #3a3a3a;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.today-exercise-item strong {
+  font-size: 16px;
+}
+
+.today-exercise-item div {
+  font-size: 14px;
+  color: #dddddd;
+}
+.today-error {
+  margin-bottom: 0.75rem;
+  color: #ffb3b3;
+}
+
+.today-success {
+  margin-bottom: 0.75rem;
+  color: #a6ffb3;
+}
+
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-tick {
+  color: #4ade80; /* green */
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.exercise-done {
+  border: 1px solid #4ade80;
+}
+
+.exercise-mini-summary {
+  font-size: 13px;
+  color: #c7f9cc;
+  margin-top: 0.3rem;
+}
+
+.start-exercise-btn {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Modal styles */
+.exercise-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.exercise-modal {
+  width: 95%;
+  max-width: 520px;
+  background: #2e2e2e;
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: #ffffff;
+}
+
+.exercise-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.exercise-time {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: #e5e5e5;
+}
+
+.sets-table {
+  margin-top: 1rem;
+}
+
+.set-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.set-row input {
+  padding: 0.3rem 0.1rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.rest-timer-block {
+  margin-top: 1rem;
+}
+
+.rest-timer-block button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+}
+
+.modal-actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.exercise-done-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #4ade80;
+  color: #000;
+  font-weight: 600;
+}
+
+.complete-day-block button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 600;
+}
+
+.today-info-banner {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid #4ade80;
+  color: #bbf7d0;
+}
+
+.completed-day-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.today-info-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.today-info-actions button {
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.complete-day-links {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.complete-day-links button {
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+.today-skip-row {
+  margin-bottom: 0.75rem;
+}
+
+.today-skip-row button {
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #444;
+  color: #fff;
+  font-size: 14px;
+}
+
+.today-skip-row button:hover {
+  background: #555;
+}
+.today-rest-actions {
+  margin-top: 1rem;
+}
+
+.today-rest-actions button {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #444;
+  color: #fff;
+  font-size: 14px;
+}
+
+.today-rest-actions button:hover {
+  background: #555;
+}
+
+
+
+
+.today-global-actions {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.today-global-actions button {
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+/* 
+.rest-timer-block,
+.complete-day-block {
+  margin-top: 1.5rem;
+}
+
+.rest-timer-block button,
+.complete-day-block button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+} */
+/* AI Planner button when no program */
+.today-ai-plan-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.4rem;
+  background-color: #f97316;
+  border-radius: 999px;
+  border: none;
+  color: #fff;
+  font-family: Poppins, sans-serif;
+  cursor: pointer;
+}
+
+.today-ai-plan-btn:hover {
+  opacity: 0.9;
+}
+
+/* Global scan row */
+.today-scan-row {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.today-scan-btn {
+  background-color: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+  font-size: 0.95rem;
+}
+
+.today-scan-btn:hover {
+  opacity: 0.9;
+}
+
+/* Tutorial button inside modal */
+.exercise-tutorial-block {
+  margin: 0.75rem 0 1rem;
+}
+
+.tutorial-btn {
+  background: transparent;
+  border: 1px solid #f97316;
+  color: #f97316;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.tutorial-btn:hover {
+  background-color: rgba(249, 115, 22, 0.1);
+}
+
+/* Tutorial popup overlay */
+.tutorial-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.tutorial-modal {
+  background: #111827;
+  border-radius: 12px;
+  padding: 0.75rem;
+  max-width: 640px;
+  width: 90%;
+  position: relative;
+}
+
+.tutorial-close-btn {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.tutorial-video-wrapper {
+  margin-top: 1.5rem;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
+.tutorial-video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Rest timer block in modal --- */
+.rest-timer-block {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rest-open-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: var(--accent, #6366f1);
+  color: #ffffff;
+}
+
+.rest-open-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.rest-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted, #9ca3af);
+}
+
+/* --- Rest popup --- */
+.rest-popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.rest-popup {
+  background: #050608;
+  border-radius: 16px;
+  padding: 1.5rem 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.rest-total-label {
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+/* Circle + SVG */
+.rest-circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rest-svg {
+  transform: rotate(-90deg); /* start from top like phone timer */
+}
+
+.rest-circle-bg,
+.rest-circle-progress {
+  fill: none;
+  stroke-width: 10;
+}
+
+.rest-circle-bg {
+  stroke: rgba(148, 163, 184, 0.35); /* grey */
+}
+
+.rest-circle-progress {
+  stroke: var(--accent, #6366f1); /* colored arc */
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+.rest-circle-number {
+  position: absolute;
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+/* Popup text + close button */
+.rest-popup-label {
+  font-size: 0.9rem;
+  color: var(--text-muted, #9ca3af);
+  text-align: center;
+}
+
+.rest-popup-close {
+  margin-top: 0.5rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #1f2933;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.rest-popup-close:hover {
+  background: #111827;
+}
+
+.rest-music-block {
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rest-music-title {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+.rest-music-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rest-music-btn,
+.rest-music-pause-btn {
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.rest-music-btn {
+  background: #f97316;
+  color: #111827;
+}
+
+.rest-music-pause-btn {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+.rest-music-btn:hover,
+.rest-music-pause-btn:hover {
+  opacity: 0.9;
+}
+
+/* small screens */
+@media (max-width: 600px) {
+  .today-container {
+    margin: 20% 1rem;
+    padding: 1.5rem;
+  }
+
+  .today-container h1 {
+    font-size: 22px;
+  }
+
+  .today-container h2 {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,93 @@
+.summary-container {
+  max-width: 1000px;
+  margin: 14% auto;
+  padding: 2rem;
+  background: #2e2e2e;
+  border-radius: 16px;
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont,
+    "Roboto", sans-serif;
+  color: #ffffff;
+  
+}
+.summary-container a{
+  padding: 0.1rem 0.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ff8a3c;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+.summary-container h1 {
+  font-size: 26px;
+  margin-bottom: 0.5rem;
+  
+}
+
+.summary-total-time {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #ff8a3c;
+}
+
+.summary-exercise-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.summary-exercise-card {
+  background: #3a3a3a;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.summary-sets-table {
+  margin-top: 0.75rem;
+  font-size: 14px;
+}
+
+.summary-sets-header,
+.summary-sets-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.summary-sets-header {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.summary-sets-row span {
+  font-weight: 400;
+}
+
+/* .summary-actions {
+  margin-top: 1.5rem;
+} */
+
+.summary-actions a {
+  /* color: #ff8a3c; */
+  text-decoration: none;
+}
+
+.summary-actions a:hover {
+  text-decoration: underline;
+}
+.summary-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.summary-history-link {
+  color: #ff8a3c;
+  text-decoration: none;
+}
+
+.summary-history-link:hover {
+  text-decoration: underline;
+}

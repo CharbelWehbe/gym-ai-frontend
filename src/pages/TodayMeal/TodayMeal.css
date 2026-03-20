@@ -1,0 +1,191 @@
+.today-meal-container {
+  max-width: 800px;
+  margin: 8rem auto;
+  padding: 1.5rem;
+  color: #f9fafb;
+}
+
+.today-meal-card {
+  background: #111827;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.today-meal-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.today-meal-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 130px;
+}
+
+.today-meal-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.today-meal-row + .today-meal-row {
+  margin-top: 1rem;
+}
+
+.today-meal-row strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.today-meal-actions {
+  margin-top: 1.5rem;
+}
+
+.meal-done-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background: #f97316;
+  color: #111827;
+}
+
+.meal-done-btn.done {
+  background: #16a34a;
+  color: #022c22;
+}
+
+.today-meal-container.error {
+  color: #fecaca;
+}
+/* --- Empty state (no diet plan) --- */
+.today-meal-empty {
+  max-width: 1000px;
+  margin: 10% auto;
+  padding: 2rem;
+  background: #2e2e2e;
+  border-radius: 16px;
+  /* text-align: center; */
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, "Roboto",
+    sans-serif;
+}
+
+.today-meal-empty-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.today-meal-empty-subtitle {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+/* reuse same style as TodayWorkout's AI planner button */
+.today-ai-plan-btn {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  background-color: #f97316;
+  border-radius: 999px;
+  border: none;
+  color: #fff;
+  font-family: Poppins, sans-serif;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.today-ai-plan-btn:hover {
+  opacity: 0.9;
+}
+/* ---------- RESPONSIVE LAYOUT ---------- */
+
+/* Tablet & small laptops (≤ 1024px) */
+@media (max-width: 1024px) {
+  .today-meal-container {
+    max-width: 90%;
+    margin: 7rem auto 3rem;
+    padding: 1.25rem;
+  }
+
+  .today-meal-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile & small tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .today-meal-container {
+    max-width: 100%;
+    margin: 6rem 1rem 2.5rem;
+    padding: 1rem;
+  }
+
+  .today-meal-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .today-meal-label {
+    min-width: 0;
+  }
+
+  .today-meal-card {
+    padding: 1.1rem;
+  }
+
+  .meal-done-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .today-meal-empty {
+    margin: 6rem 1rem 2.5rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .today-meal-container {
+    margin: 5rem 0.75rem 2rem;
+    padding: 0.9rem;
+  }
+
+  .today-meal-card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .today-meal-row strong {
+    font-size: 0.95rem;
+  }
+
+  .today-meal-row p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .today-meal-empty {
+    margin: 5.5rem 0.75rem 2rem;
+    padding: 1.3rem;
+    text-align: center; /* center only on small screens */
+  }
+
+  .today-meal-empty-title {
+    font-size: 1.05rem;
+  }
+
+  .today-meal-empty-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .today-ai-plan-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
