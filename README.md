@@ -86,6 +86,22 @@ VITE_BASE_IMAGE_URL=http://localhost:8000/storage
 ![SignUp](./src/assets/screenshots/SignUp.png)
 
 
+
+To open the project form the mobile phone : 
+
+1- Find your laptop IP address run in the cmd : ipconfig (Looks for IPV4)
+2- Run Laravel backend so it's accessible externally , run : php artisan serve --host=0.0.0.0 --port=8000 (in the backend)
+3- Run React Vite for network access, run : npm run dev -- --host
+
+4- Update your frontend environment variables In your .env(React): 
+VITE_BASE_URL=http://192.168.x.x:8000
+VITE_BASE_IMAGE_URL=http://192.168.x.x:8000/storage
+Then restart Vite: npm run dev
+
+5- Open this on your phone browser:
+http://192.168.X.X:8000 (replace x.x by your IPV4 address)
+
+
 👥 Contributors
 
 👨‍💻 Charbel Wehbe
